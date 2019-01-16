@@ -8,7 +8,7 @@ FLUSH PRIVILEGES;
 
 
 CREATE TABLE Utilisateur (
-    id INT(100) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id INT(100) PRIMARY KEY AUTO_INCREMENT,
     utilisateur VARCHAR(100),
     motDePasse VARCHAR(255),
     dateDernierConnexion DATE,
@@ -17,7 +17,7 @@ CREATE TABLE Utilisateur (
 
 
 CREATE TABLE Chien (
-    id INT(100) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id INT(100) PRIMARY KEY AUTO_INCREMENT,
     nomElevage VARCHAR(100),
     nom VARCHAR(100),
     dateNaissance DATE,
@@ -28,7 +28,7 @@ CREATE TABLE Chien (
 
 
 CREATE TABLE Article (
-    id INT(100) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id INT(100) PRIMARY KEY AUTO_INCREMENT,
     img VARCHAR(200),
     texte VARCHAR(250),
     dateDePublication DATE,
@@ -37,7 +37,7 @@ CREATE TABLE Article (
 
 
 CREATE TABLE Commentaires(
-    id INT(100) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id INT(100) PRIMARY KEY AUTO_INCREMENT,
     TexteDuCommentaire VARCHAR(1000),
     dateCommentaire DATE,
     FOREIGN KEY (user_id) REFERENCES Utilisateur(id),
