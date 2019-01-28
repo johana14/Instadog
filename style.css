@@ -12,12 +12,12 @@ h1{
     color: #000;
 }
 
-.navbar-dark {
+/* .navbar-dark {
     background: rgba(0, 0, 0, 0.2) !important;
     position: absolute;
     left: 0;
     right: 0;
-}
+} */
 
 .navbar-seperator:before {
     position: absolute;
@@ -85,5 +85,15 @@ h1{
 .home-footer {
     background: #000; }
         
+.h1-dog {
+    color:black;
+    text-align:center;
 
-      
+}
+/*bouton ajoter un article*/
+.addArticle{
+    margin: 20px;
+}
+#cancel{
+    margin:20px;
+}
