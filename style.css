@@ -70,6 +70,9 @@ h1{
     border-color: #28CC9E;
      color: #fff; 
 }
+/*bouton ajoter un article*/
+.addArticle{
+    margin: 20px;
 .cover .btn.btn-primary:hover, .cover .btn.btn-primary:focus, .cover .btn.btn-primary:active {
     background: #4bdcb3; 
     }
@@ -78,6 +81,8 @@ h1{
     border-color: #fff;
     background: none; 
 }
+#cancel{
+    margin:20px;
 .cover .btn.btn-outline-white:hover, .cover .btn.btn-outline-white:focus, .cover .btn.btn-outline-white:active {
     background: #fff;
     color: #000; 
