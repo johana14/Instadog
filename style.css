@@ -1,96 +1,145 @@
-body{
-    background:;
-}
-.emp-profile{
-    padding: 3%;
-    margin-top: 3%;
-    margin-bottom: 3%;
-    border-radius: 0.5rem;
-    background: #fff;
-}
-.profile-img{
-    text-align: center;
-}
-.profile-img img{
-    width: 70%;
-    height: 100%;
-}
-.profile-img .file {
-    position: relative;
-    overflow: hidden;
-    margin-top: -20%;
-    width: 70%;
-    border: none;
-    border-radius: 0;
-    font-size: 15px;
-    background: #212529b8;
-}
-.profile-img .file input {
-    position: absolute;
-    opacity: 0;
-    right: 0;
-    top: 0;
-}
-.profile-head h5{
-    color: #333;
-}
-.profile-head h6{
-    color: #0062cc;
-}
-.profile-edit-btn{
-    border: none;
-    border-radius: 1.5rem;
-    width: 70%;
-    padding: 2%;
-    font-weight: 600;
-    color: #6c757d;
-    cursor: pointer;
-}
-.proile-rating{
-    font-size: 12px;
-    color: #818182;
-    margin-top: 5%;
-}
-.proile-rating span{
-    color: #495057;
-    font-size: 15px;
-    font-weight: 600;
-}
-.profile-head .nav-tabs{
-    margin-bottom:5%;
-}
-.profile-head .nav-tabs .nav-link{
-    font-weight:600;
-    border: none;
-}
-.profile-head .nav-tabs .nav-link.active{
-    border: none;
-    border-bottom:2px solid #0062cc;
-}
-.profile-work{
-    padding: 14%;
-    margin-top: -15%;
-}
-.profile-work p{
-    font-size: 12px;
-    color: #818182;
-    font-weight: 600;
-    margin-top: 10%;
-}
-.profile-work a{
-    text-decoration: none;
-    color: #495057;
-    font-weight: 600;
-    font-size: 14px;
-}
-.profile-work ul{
-    list-style: none;
-}
-.profile-tab label{
-    font-weight: 600;
-}
-.profile-tab p{
-    font-weight: 600;
-    color: #0062cc;
+body {
+background: #fff;
+font-family: sans-serif;
+line-height: 1.7;
+color: #6f6f6f;
+margin:0px;
+padding: 0px; 
+
 }
 
+/* --Home content--*/
+h1{
+    font-weight: bold;
+    color: #000;
+}
+
+.nav-home{
+    background: rgba(0, 0, 0, 0.2) !important; 
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.navbar-seperator:before {
+    position: absolute;
+    content: "";
+    top: 10px;
+    bottom: 10px;
+    left: 0;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.navbar-seperator {
+    position: relative;
+    margin-left: 20px;
+    padding-left: 20px;
+}
+
+
+
+.cover,{
+    background-image: url(images/rosepetals.svg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.home-vh-100{
+    height: 100vh;
+}
+
+.cover .btn, .btn-primary-profil, .btn-secondary-profil {
+    border-radius: 40px;
+    padding: 20px 30px;
+    font-size: 14px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer; 
+}
+.cover .btn:hover, .cover .btn:active, .cover .btn:focus, .btn-primary-profil, .btn-secondary-profil {
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none; 
+}
+
+.cover .btn.btn-primary, .btn-primary-profil {
+    background: #28CC9E;
+    border-color: #28CC9E;
+     color: #fff; 
+}
+.cover .btn.btn-primary:hover, .cover .btn.btn-primary:focus, .cover .btn.btn-primary:active {
+    background: #4bdcb3; 
+    }
+
+.cover .btn.btn-outline-white {
+    border-color: #fff;
+    background: none; 
+}
+.cover .btn.btn-outline-white:hover, .cover .btn.btn-outline-white:focus, .cover .btn.btn-outline-white:active {
+    background: #fff;
+    color: #000; 
+}
+
+.home-footer {
+    background: #000;
+    color: #fff;
+    font-size: 24px; 
+}
+        
+      
+/* Gallery */
+
+.square {
+    position: relative;
+    width: 100%;
+    margin-bottom:10px;
+  }
+  
+  .square:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+  
+  .content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+    padding:0px;
+  }
+  
+  .content img{
+      object-fit: cover;
+  }
+
+ /* user profile */
+
+ /* .cover .btn, .btn-primary-profil, .btn-secondary-profil {
+    border-radius: 40px;
+    padding: 20px 30px;
+    font-size: 14px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer; 
+}
+.cover .btn:hover, .cover .btn:active, .cover .btn:focus, .btn-primary-profil, .btn-secondary-profil {
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none; 
+}
+
+.cover .btn.btn-primary, .btn-primary-profil {
+    background: #28CC9E;
+    border-color: #28CC9E;
+     color: #fff; 
+}
+.cover .btn.btn-primary:hover, .cover .btn.btn-primary:focus, .cover .btn.btn-primary:active {
+    background: #4bdcb3; 
+    }
+ */
