@@ -87,21 +87,94 @@ h1{
 }
 .cover .btn.btn-outline-white:hover, .cover .btn.btn-outline-white:focus, .cover .btn.btn-outline-white:active {
     background: #fff;
-    color: #000; 
+    font-family: sans-serif;
+    line-height: 1.7;
+    color: #6f6f6f;
+    margin:0px;
+    padding: 0px; 
+    
+    }
+    
+/* --Home content--*/
+h1{
+    font-weight: bold;
+    color: #000;
 }
-
+    
+.navbar-home {
+    background:transparent;
+}
+    
+    /* footer */
 .home-footer {
+    position: relative;
     background: #000;
     color: #fff;
-    font-size: 24px; 
-}
+    font-size: 24px;
+    }
+    
+    
+.cover{
+    background-image: url(images/rosepetals.svg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
         
+    }
+    
+.home-vh-100{
+    height: 100vh;
+    }
+    
+.cover .btn, .btn-primary-profil, .btn-secondary-profil {
+    border-radius: 40px;
+    padding: 20px 30px;
+    font-size: 14px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer; 
+}
+.cover .btn:hover, .cover .btn:active, .cover .btn:focus, .btn-primary-profil, .btn-secondary-profil {
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none; 
+}
+    
+.cover .btn.btn-primary, .btn-primary-profil {
+    background: #28CC9E;
+    border-color: #28CC9E;
+    color: #fff; 
+    }
+.cover .btn.btn-primary:hover, .cover .btn.btn-primary:focus, .cover .btn.btn-primary:active {
+    background: #4bdcb3; 
+}
+    
+.cover .btn.btn-outline-white {
+    border-color: #fff;
+    background: none; 
+}
+.cover .btn.btn-outline-white:hover, .cover .btn.btn-outline-white:focus, .cover .btn.btn-outline-white:active {
+    background: #fff;
+    color: #000; 
+}
+    
+
+            
+          
+/* Gallery */
+    
+.square {
+    position: relative;
+    width: 100%;
+    margin-bottom:10px;
+    }
       
-      .square:after {
-        content: "";
-        display: block;
-        padding-bottom: 100%;
-      }
+    .square:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+    }
       
       .content {
         position: absolute;
@@ -116,40 +189,25 @@ h1{
           object-fit: cover;
       }
     
-      #addarticle{
-        padding: 39px;
-      }
 
       .flex-item {
         justify-content: center;
       }
 
+/* profil user */
 
-     /* user profile */
-    
-     /* .cover .btn, .btn-primary-profil, .btn-secondary-profil {
-        border-radius: 40px;
-        padding: 20px 30px;
-        font-size: 14px;
-        letter-spacing: .1em;
-        text-transform: uppercase;
-        font-weight: bold;
-        cursor: pointer; 
-    }
- */
- #addArticle {
-    padding: 108px;
-}
-#accueill{
-    padding: 2px;
+.profil-user{
+    margin-top: 21px;
 }
 
-#button{
-    margin-top: 30px;
+.footer {
+    position: relative;
+    background: #000;
+    color: #fff;
+    font-size: 24px;
+    margin-top: 8.5%;
 }
-#login{
-    margin-top: 200px;
-}
-#accLogin{
-    margin-top: 210px;
+
+#addarticle{
+    margin-top: 5%;
 }
