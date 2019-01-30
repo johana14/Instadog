@@ -97,57 +97,44 @@ h1{
 }
         
       
-/* Gallery */
+      .square:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+      
+      .content {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top:0;
+        left:0;
+        padding:0px;
+      }
+      
+      .content img{
+          object-fit: cover;
+      }
+    
+      #addarticle{
+        padding: 39px;
+      }
 
-.square {
-    position: relative;
-    width: 100%;
-    margin-bottom:10px;
-  }
-  
-  .square:after {
-    content: "";
-    display: block;
-    padding-bottom: 100%;
-  }
-  
-  .content {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top:0;
-    left:0;
-    padding:0px;
-  }
-  
-  .content img{
-      object-fit: cover;
-  }
+      .flex-item {
+        justify-content: center;
+      }
 
- /* user profile */
 
- /* .cover .btn, .btn-primary-profil, .btn-secondary-profil {
-    border-radius: 40px;
-    padding: 20px 30px;
-    font-size: 14px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer; 
-}
-.cover .btn:hover, .cover .btn:active, .cover .btn:focus, .btn-primary-profil, .btn-secondary-profil {
-    outline: none;
-    -webkit-box-shadow: none;
-    box-shadow: none; 
-}
-
-.cover .btn.btn-primary, .btn-primary-profil {
-    background: #28CC9E;
-    border-color: #28CC9E;
-     color: #fff; 
-}
-.cover .btn.btn-primary:hover, .cover .btn.btn-primary:focus, .cover .btn.btn-primary:active {
-    background: #4bdcb3; 
+     /* user profile */
+    
+     /* .cover .btn, .btn-primary-profil, .btn-secondary-profil {
+        border-radius: 40px;
+        padding: 20px 30px;
+        font-size: 14px;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        font-weight: bold;
+        cursor: pointer; 
     }
  */
  #addArticle {
