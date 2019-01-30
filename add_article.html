@@ -30,6 +30,9 @@
           <li class="nav-item">
             <a class="nav-link" href="gallery.html">Search</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Logout</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -38,7 +41,7 @@
   <div class="container"id="addArticle">
     <div class="row mt-5 mx-auto">
       <div class="col-sm-12 col-md-12 col-lg-12">
-        <h1 class="text-center">Create Post</h1>
+        <h1 class="text-center">add a new article</h1>
         <form action="" method="POST">
           <div class="form-group">
             <label for="title">Titre<span class="require">*</span></label>
@@ -51,7 +54,14 @@
           <div class="form-group">
             <p><span class="require">*</span> - required fields</p>
           </div>
-          <div class="form-group">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="telechargement">
+            <label class="custom-file-label" for="customFile"></label>
+          </div>
+          <input type="file" class="custom-file-input" id="customFile">
+          
+
+          <div class="form-group col-md-12 mt-5">
             <button type="submit" class="btn btn-default">Cancel</button>
             <button type="submit" class="btn btn-primary">Create</button>
           </div>
