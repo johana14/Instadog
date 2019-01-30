@@ -39,7 +39,7 @@ h1{
 
 
 
-.cover,{
+.cover{
     background-image: url(images/rosepetals.svg);
     background-position: center;
     background-size: cover;
@@ -73,6 +73,7 @@ h1{
 /*bouton ajoter un article*/
 .addArticle{
     margin: 20px;
+}
 .cover .btn.btn-primary:hover, .cover .btn.btn-primary:focus, .cover .btn.btn-primary:active {
     background: #4bdcb3; 
     }
@@ -83,6 +84,7 @@ h1{
 }
 #cancel{
     margin:20px;
+}
 .cover .btn.btn-outline-white:hover, .cover .btn.btn-outline-white:focus, .cover .btn.btn-outline-white:active {
     background: #fff;
     color: #000; 
@@ -148,3 +150,9 @@ h1{
     background: #4bdcb3; 
     }
  */
+ #addArticle {
+    padding: 108px;
+}
+#accueill{
+    padding: 2px;
+}
