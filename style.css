@@ -1,150 +1,154 @@
 body {
-background: #fff;
-font-family: sans-serif;
-line-height: 1.7;
-color: #6f6f6f;
-margin:0px;
-padding: 0px; 
-
-}
-
-/* --Home content--*/
-h1{
-    font-weight: bold;
-    color: #000;
-}
-
-.nav-home{
-    background: rgba(0, 0, 0, 0.2) !important; 
-    position: absolute;
-    left: 0;
-    right: 0;
-}
-
-.navbar-seperator:before {
-    position: absolute;
-    content: "";
-    top: 10px;
-    bottom: 10px;
-    left: 0;
-    width: 2px;
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.navbar-seperator {
-    position: relative;
-    margin-left: 20px;
-    padding-left: 20px;
-}
-
-
-
-.cover,{
-    background-image: url(images/rosepetals.svg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.home-vh-100{
-    height: 100vh;
-}
-
-.cover .btn, .btn-primary-profil, .btn-secondary-profil {
-    border-radius: 40px;
-    padding: 20px 30px;
-    font-size: 14px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer; 
-}
-.cover .btn:hover, .cover .btn:active, .cover .btn:focus, .btn-primary-profil, .btn-secondary-profil {
-    outline: none;
-    -webkit-box-shadow: none;
-    box-shadow: none; 
-}
-
-.cover .btn.btn-primary, .btn-primary-profil {
-    background: #28CC9E;
-    border-color: #28CC9E;
-     color: #fff; 
-}
-/*bouton ajoter un article*/
-.addArticle{
-    margin: 20px;
-.cover .btn.btn-primary:hover, .cover .btn.btn-primary:focus, .cover .btn.btn-primary:active {
-    background: #4bdcb3; 
-    }
-
-.cover .btn.btn-outline-white {
-    border-color: #fff;
-    background: none; 
-}
-#cancel{
-    margin:20px;
-.cover .btn.btn-outline-white:hover, .cover .btn.btn-outline-white:focus, .cover .btn.btn-outline-white:active {
     background: #fff;
-    color: #000; 
-}
-
-.home-footer {
-    background: #000;
-    color: #fff;
-    font-size: 24px; 
-}
-        
-      
-/* Gallery */
-
-.square {
-    position: relative;
-    width: 100%;
-    margin-bottom:10px;
-  }
-  
-  .square:after {
-    content: "";
-    display: block;
-    padding-bottom: 100%;
-  }
-  
-  .content {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top:0;
-    left:0;
-    padding:0px;
-  }
-  
-  .content img{
-      object-fit: cover;
-  }
-
- /* user profile */
-
- /* .cover .btn, .btn-primary-profil, .btn-secondary-profil {
-    border-radius: 40px;
-    padding: 20px 30px;
-    font-size: 14px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer; 
-}
-.cover .btn:hover, .cover .btn:active, .cover .btn:focus, .btn-primary-profil, .btn-secondary-profil {
-    outline: none;
-    -webkit-box-shadow: none;
-    box-shadow: none; 
-}
-
-.cover .btn.btn-primary, .btn-primary-profil {
-    background: #28CC9E;
-    border-color: #28CC9E;
-     color: #fff; 
-}
-.cover .btn.btn-primary:hover, .cover .btn.btn-primary:focus, .cover .btn.btn-primary:active {
-    background: #4bdcb3; 
+    font-family: sans-serif;
+    line-height: 1.7;
+    color: #6f6f6f;
+    margin:0px;
+    padding: 0px; 
+    
     }
- */
+    
+    /* --Home content--*/
+    h1{
+        font-weight: bold;
+        color: #000;
+    }
+    
+    .nav-home{
+        background: rgba(0, 0, 0, 0.2) !important; 
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+    
+    .navbar-seperator:before {
+        position: absolute;
+        content: "";
+        top: 10px;
+        bottom: 10px;
+        left: 0;
+        width: 2px;
+        background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .navbar-seperator {
+        position: relative;
+        margin-left: 20px;
+        padding-left: 20px;
+    }
+    
+    
+    
+    .cover{
+        background-image: url(images/rosepetals.svg);
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    .home-vh-100{
+        height: 100vh;
+    }
+    
+    .cover .btn, .btn-primary-profil, .btn-secondary-profil {
+        border-radius: 40px;
+        padding: 20px 30px;
+        font-size: 14px;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        font-weight: bold;
+        cursor: pointer; 
+    }
+    .cover .btn:hover, .cover .btn:active, .cover .btn:focus, .btn-primary-profil, .btn-secondary-profil {
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none; 
+    }
+    
+    .cover .btn.btn-primary, .btn-primary-profil {
+        background: #28CC9E;
+        border-color: #28CC9E;
+         color: #fff; 
+    }
+    .cover .btn.btn-primary:hover, .cover .btn.btn-primary:focus, .cover .btn.btn-primary:active {
+        background: #4bdcb3; 
+        }
+    
+    .cover .btn.btn-outline-white {
+        border-color: #fff;
+        background: none; 
+    }
+    .cover .btn.btn-outline-white:hover, .cover .btn.btn-outline-white:focus, .cover .btn.btn-outline-white:active {
+        background: #fff;
+        color: #000; 
+    }
+    
+    .home-footer {
+        background: #000;
+        color: #fff;
+        font-size: 24px; 
+    }
+            
+          
+    /* Gallery */
+    
+    .square {
+        position: relative;
+        width: 100%;
+        margin-bottom:10px;
+      }
+      
+      .square:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+      
+      .content {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top:0;
+        left:0;
+        padding:0px;
+      }
+      
+      .content img{
+          object-fit: cover;
+      }
+    
+      #addarticle{
+        padding: 39px;
+      }
+
+      .flex-item {
+        justify-content: center;
+      }
+
+
+     /* user profile */
+    
+     /* .cover .btn, .btn-primary-profil, .btn-secondary-profil {
+        border-radius: 40px;
+        padding: 20px 30px;
+        font-size: 14px;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        font-weight: bold;
+        cursor: pointer; 
+    }
+    .cover .btn:hover, .cover .btn:active, .cover .btn:focus, .btn-primary-profil, .btn-secondary-profil {
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none; 
+    }
+    
+    .cover .btn.btn-primary, .btn-primary-profil {
+        background: #28CC9E;
+        border-color: #28CC9E;
+         color: #fff; 
+    }
+    .cover .btn.btn-primary:hover, .cover .btn.btn-primary:focus, .cover .btn.btn-primary:active {
+        background: #4bdcb3; 
+        }
+     */
