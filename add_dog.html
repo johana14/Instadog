@@ -2,7 +2,9 @@
 <html>
 
 <head>
-  <title>Bootstrap Navbar Tutorial</title>
+    <title>Bootstrap Navbar Tutorial</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -37,33 +39,41 @@
   </nav>
   <!-- Page Content -->
   <div class="container" id="add_dog">
-      <div class="col-md-12 col-sm-12 col-lg-12 mx-auto">
-          <h1 class="h1-dog text-center">Add Dog</h1>
-        <form class="add-dog">
-          <div class="form-group"> <label>Add Dog</label> <input type="text" class="form-control" placeholder="nameBreeding">
-            <small class="form-text text-muted">We'll never share your email with anyone else.</small> </div>
-          <div class="form-group"> <label>Nickname</label> <input type="text" class="form-control" placeholder="Nickname">
+    <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
+      <h1 class="h1-dog text-center">Add Dog</h1>
+      <form class="add-dog" method="POST">
+        <div class="form-group">
+          <label>Add Dog</label>
+          <input type="text" class="form-control" placeholder="nameBreeding">
+          <small class="form-text text-muted">
+            We'll never share your email with anyone else.
+          </small> 
+        </div>
+        <div class="form-group"> 
+          <label>Nickname</label> 
+          <input type="text" class="form-control" placeholder="Nickname">
+        </div>
+        <div class="form-group"> 
+          <label>Birthday</label> 
+          <input type="date" class="form-control" placeholder="Date of birthday">
+        </div>
+        <div class="form-group"> <label>Gender</label>
+          <div class="radio">
+            <input class="form-check-input" type="radio" name="legendRadio" id="legendRadio1" value="1">Male</label>
           </div>
-          <div class="form-group"> <label>Birthday</label> <input type="date" class="form-control" placeholder="Date of birthday">
+          <div class="radio">
+            <label><input class="form-check-input" type="radio" name="legendRadio" id="legendRadio2" value="2">Female</label>
           </div>
-          <div class="form-group"> <label>Gender</label>
-            <div class="radio">
-              <input class="form-check-input" type="radio" name="legendRadio" id="legendRadio1" value="1">Male</label> 
-            </div>
-            <div class="radio">
-              <label><input class="form-check-input" type="radio" name="legendRadio" id="legendRadio2" value="2">Female</label>    
-            </div>
-          </div>
-          <h2>Add Dog picture</h2>
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile">
-            <label class="custom-file-label" for="customFile"></label>
-          </div>
-          <button type="submit" class="btn btn-primary mt-2">Submit</button>
-        </form>
-      </div>
+        </div>
+        <h2>Add Dog picture</h2>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="customFile">
+          <label class="custom-file-label" for="customFile"></label>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Submit</button>
+      </form>
     </div>
-  
+  </div>
   <footer class="footer">
     <div class="container">
       <div class="row align-items-center text-center">
@@ -74,6 +84,7 @@
     </div>
   </footer>
 </body>
+
 </html>
 <!-- Bootstrap core JavaScript -->
 <script src="assets/js/jquery-3.3.1.slim.min.js"></script>
