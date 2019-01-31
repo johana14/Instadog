@@ -1,11 +1,21 @@
 body {
-background: white;
+background: black;
 font-family: sans-serif;
 line-height: 1.7;
-color: #6f6f6f;
+color: black;
 margin:0px;
 padding: 0px; 
+}
 
+.cover-container {
+    height: 100vh;
+}
+
+.bg-cover{
+    background-image: url(images/background.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 /* --Home content--*/
@@ -14,6 +24,12 @@ h1{
     color: #000;
 }
 
+.navbar-home{
+background: rgba(0, 0, 0, 0.2) !important;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
 .navbar-seperator:before {
     position: absolute;
     content: "";
@@ -63,10 +79,21 @@ h1{
     border-color: #28CC9E;
      color: #fff; 
 }
-/*bouton ajoter un article*/
+
+/*bouton ajouter un article*/
 .addArticle{
     margin: 20px;
 }
+
+.preview-article{
+    border: 1px white;
+    background-color:black;
+    color: white;
+}
+
+.body-change {
+    background-color: #fff;
+    }
 .cover .btn.btn-primary:hover, .cover .btn.btn-primary:focus, .cover .btn.btn-primary:active {
     background: #4bdcb3; 
     }
@@ -75,9 +102,7 @@ h1{
     border-color: #fff;
     background: none; 
 }
-#cancel{
-    margin:20px;
-}
+
 .cover .btn.btn-outline-white:hover, .cover .btn.btn-outline-white:focus, .cover .btn.btn-outline-white:active {
     background: #fff;
     font-family: sans-serif;
@@ -87,85 +112,17 @@ h1{
     padding: 0px; 
     
     }
-    
-/* --Home content--*/
-h1{
-    font-weight: bold;
-    color: #000;
-}
-    
-.navbar-home {
-    background:transparent;
-}
-    
-/* footer */
-.home-footer {
-    position: relative;
-    background: #000;
-    color: #fff;
-    font-size: 24px;
-}
 
-/* .footer {
-    position: relative;
-    background: #000;
-    color: #fff;
-    font-size: 24px;
-    margin-top: 5%;
-} */
-      
-.cover{
-    background-image: url(images/rosepetals.svg);
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-        
+    #cancel{
+        margin:20px;
     }
-    
-.home-vh-100{
-    height: 100vh;
-    }
-    
-.cover .btn, .btn-primary-profil, .btn-secondary-profil {
-    border-radius: 40px;
-    padding: 20px 30px;
-    font-size: 14px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer; 
-}
-.cover .btn:hover, .cover .btn:active, .cover .btn:focus, .btn-primary-profil, .btn-secondary-profil {
-    outline: none;
-    -webkit-box-shadow: none;
-    box-shadow: none; 
-}
-    
-.cover .btn.btn-primary, .btn-primary-profil {
-    background: #28CC9E;
-    border-color: #28CC9E;
-    color: #fff; 
-    }
-.cover .btn.btn-primary:hover, .cover .btn.btn-primary:focus, .cover .btn.btn-primary:active {
-    background: #4bdcb3; 
-}
-    
-.cover .btn.btn-outline-white {
-    border-color: #fff;
-    background: none; 
-}
-.cover .btn.btn-outline-white:hover, .cover .btn.btn-outline-white:focus, .cover .btn.btn-outline-white:active {
-    background: #fff;
-    color: #000; 
-}
-           
-          
+                     
 /* Gallery */
     
 .square {
     position: relative;
     width: 100%;
-    margin-bottom:10px;
+    margin-bottom:2px;
     }
       
     .square:after {
@@ -200,17 +157,17 @@ h1{
 
 /* login and signup */
 
-.login, .signup{
-    margin-top: 10%;
-    margin-bottom: 10%;
+@media screen and (max-width: 960px){
+.navbar-home {
+    background: #000 !important;
+    top: 0;
+    position: relative;
+    }
 }
 
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#050201+0,e5e5e5+100 */
-.footer{
-background: #050201; /* Old browsers */
-background: -moz-linear-gradient(top, #050201 0%, #e5e5e5 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top, #050201 0%,#e5e5e5 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom, #050201 0%,#e5e5e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#050201', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+/* footer */
+.p-5 {
+    background: #000;
+    color: #fff;
+    font-size: 14px;
 }
-
