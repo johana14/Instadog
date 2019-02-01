@@ -44,18 +44,18 @@
         <h1>SIGNUP</h1>
         <div class="form-group col-12">
           <label for="inputuserName">userName</label>
-          <input type="text" class="form-control" id="inputUser" placeholder="userName">
+          <input type="text" class="form-control" name="username" id="inputUser" placeholder="userName">
         </div>
         <div class="form-group col-12">
           <label for="inputPassword">Password</label>
-          <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+          <input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password">
         </div>
         <div class="form-group col-12">
           <label for="inputVerifypassword">verify Password</label>
-          <input type="password" class="form-control" id="inputverifyPassword" placeholder="verify Password">
+          <input type="password" class="form-control" name="verifypassword" id="inputverifyPassword" placeholder="verify Password">
           </div>
         <div class="col-lg-12 text-center mt-4">
-          <button type="submit" class="btn btn-primary">Cancel</button><a class="" href="profil_utilisateur.html"></a>
+          <button type="reset" class="btn btn-primary">Cancel</button><a class="" onclick="location.href='accueil.php'"></a>
           <button type="submit" class="btn btn-primary">Send</button><a class="" href="profil_utilisateur.html"></a>
         </div>
       </form>

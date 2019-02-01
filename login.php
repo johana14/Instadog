@@ -41,11 +41,11 @@
   <!-- Page Content -->
   <div class="container-fluid cover-container text-center d-flex flex-column">
     <div class="row align-items-center justify-content-center flex-fill">
-      <form class="mx-auto">
+      <form class="mx-auto" method="GET">
         <h1>LOGIN</h1>
         <div class="form-group col-12">
           <label for="inputuserName">userName</label>
-          <input type="text" class="form-control" id="inputUser" placeholder="userName">
+          <input type="text" class="form-control"  id="inputUser" placeholder="userName">
         </div>
         <div class="form-group col-12">
           <label for="inputPassword">Password</label>
