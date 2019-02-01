@@ -1,6 +1,6 @@
 CREATE DATABASE InstaDog;
 
-CREATE USER 'adminInstaDog'@'localhost' IDENTIFIED BY 'digital2018';
+CREATE USER 'adminInstaDog'@'localhost' IDENTIFIED BY 'inst@D0g';
 
 GRANT ALL PRIVILEGES ON InstaDog.* TO 'adminInstaDog'@'localhost';
 
@@ -23,7 +23,7 @@ CREATE TABLE Chien (
     sexe VARCHAR(100),
     race VARCHAR(100),
     user_id INT(100),
-    photo VARCHAR(100)
+    photo VARCHAR(100),
     FOREIGN KEY (user_id) REFERENCES Utilisateur(id)
 );
 
