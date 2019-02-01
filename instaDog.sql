@@ -1,6 +1,6 @@
 CREATE DATABASE InstaDog;
 
-CREATE USER 'adminInstaDog'@'localhost' IDENTIFIED BY 'digital2018';
+CREATE USER 'adminInstaDog'@'localhost' IDENTIFIED BY 'Inst@D0g';
 
 GRANT ALL PRIVILEGES ON InstaDog.* TO 'adminInstaDog'@'localhost';
 
