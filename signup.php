@@ -40,23 +40,20 @@
   <!-- Page Content -->
   <div class="container-fluid cover-container text-center d-flex flex-column">
       <div class="row bg align-items-center justify-content-center flex-fill">
-      <form class="mx-auto">
+      <form class="mx-auto" action="profil_utilisateur.php" method="POST">
         <h1>SIGNUP</h1>
         <div class="form-group col-12">
-          <label for="inputuserName">userName</label>
+          <label class="inputuserName">userName</label>
           <input type="text" class="form-control" name="username" id="inputUser" placeholder="userName">
         </div>
         <div class="form-group col-12">
-          <label for="inputPassword">Password</label>
+          <label class="inputPassword">Password</label>
           <input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password">
         </div>
-        <div class="form-group col-12">
-          <label for="inputVerifypassword">verify Password</label>
-          <input type="password" class="form-control" name="verifypassword" id="inputverifyPassword" placeholder="verify Password">
-          </div>
+        
         <div class="col-lg-12 text-center mt-4">
           <button type="reset" class="btn btn-primary">Cancel</button><a class="" onclick="location.href='accueil.php'"></a>
-          <button type="submit" class="btn btn-primary">Send</button><a class="" href="profil_utilisateur.html"></a>
+          <button type="submit" class="btn btn-primary" name="submit">Submit</button>
         </div>
       </form>
     </div>

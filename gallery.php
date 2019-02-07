@@ -1,3 +1,8 @@
+<?PHP
+require_once ('connexion.php');
+$appliBD = new Connexion();
+$chiens = $appliBD->selectAllChien();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -66,39 +71,19 @@
       </div>
     </div>
     <div class="row mt-5">
+    <?php
+          foreach ($chiens as $chien)
+          {
+            echo'
       <div class="square col-lg-3 col-sm-12 col-md-3 mx auto">
         <div class="content">
-          <img class=" content img-fluid" src="images/chien1.jpeg">
+          <img class=" content img-fluid" src="'.$chien->getPhoto().'">
         </div>
       </div>
-      <div class="square col-lg-3 col-sm-12 col-md-3 mx auto">
-        <div class="content">
-          <img class=" content img-fluid" src="images/chien2.jpeg">
-        </div>
-      </div>
-      <div class="square col-lg-3 col-sm-12 col-md-3 mx auto">
-        <div class="content">
-          <img class=" content img-fluid" src="images/chien1.jpeg">
-        </div>
-      </div>
-      <div class="square col-lg-3 col-sm-12 col-md-3 mx auto">
-        <div class="content">
-          <img class=" content img-fluid" src="images/chien2.jpeg">
-        </div>
-      </div>
-      <div class="square col-lg-3 col-sm-12 col-md-3 mx auto">
-        <div class="content">
-          <img class=" content img-fluid" src="images/chien1.jpeg">
-        </div>
-      </div>
-      <div class="square col-lg-3 col-sm-12 col-md-3 mx auto">
-        <div class="content">
-          <img class=" content img-fluid" src="images/chien2.jpeg">
-        </div>
-      </div>
+      ';}?>
     </div>
   </div>
-  <footer class="p-5">
+  
     <div class="container">
       <div class="row align-items-center text-center">
         <div class="col-sm-12 cold-md-12 col-lg-12">
@@ -106,7 +91,7 @@
         </div>
       </div>
     </div>
-  </footer>
+  
 </body>
 
 </html>

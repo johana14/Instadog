@@ -1,4 +1,9 @@
 <?php
+require_once ('classes/article.php');
+require_once ('classes/chien.php');
+require_once ('classes/commentaire.php');
+require_once ('classes/profil.php');
+require_once ('classes/utilisateur.php');
 class Connexion
 {
 
@@ -11,7 +16,7 @@ class Connexion
         $PARAM_port = '3306';
         $PARAM_nom_bd = 'InstaDog';
         $PARAM_utilisateur = 'adminInstaDog';
-        $PARAM_mot_passe = 'Inst@D0g';
+        $PARAM_mot_passe = 'digital2018';
 
         try {
             $this->connexion = new PDO(
@@ -30,61 +35,116 @@ class Connexion
         return $this->connexion;
 
     }
-        //recuperer les donnés de la base pour lutilisiteur
-    public function selectAllUtilisateur(int $id)
+
+    //recuperer les donnés de la base pour lutilisiteur
+    public function selectUserById(int $id)
     {
 
-        $requete_prepare = $this->connexion->prepare(
-            "SELECT *  FROM Utilisateur WHERE Id = :id"
+        $stmt = $this->connexion->prepare(
+            "SELECT *  FROM utilisateur WHERE id = :id"
         );
-        $requete_prepare->execute(array('id' => $id));
+        $stmt->execute(array('id' => $id));
 
-        $resultat = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
+        $utilisateur = $stmt->fetchObject('Utilisateur');
 
-        return $resultat;
+        return $utilisateur;
     }
     
-    //recuperer les donnés de la base pour le chien
-    public function selectAllChien(int $id)
+    public function getChienById(int $id)
     {
 
-        $requete_prepare = $this->connexion->prepare(
-            "SELECT *  FROM Chien WHERE Id = :id"
+        $stmt = $this->connexion->prepare(
+            "SELECT *  FROM chien 
+            INNER JOIN utilisateur
+            ON chien.user_id = utilisateur.id
+            WHERE chien.id = :id"
         );
-        $requete_prepare->execute(array('id' => $id));
+        $stmt->execute(array('id' => $id));
 
-        $resultat = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
+        $chien = $stmt->fetchObject('Chien');
 
-        return $resultat;
+        return $chien;
     }
+
+
+    //recuperer les donnés de la base pour le chien
+    public function selectAllChien()
+    {
+
+        $stmt = $this->connexion->prepare(
+            "SELECT *  FROM chien 
+            INNER JOIN utilisateur
+            ON chien.user_id = utilisateur.id"
+        );
+        $stmt->execute();
+
+        $chien = $stmt->fetchAll(PDO::FETCH_CLASS, 'Chien');
+
+        return $chien;
+    }
+
     
     //recuperer les donnés dee la base pour l'article
     public function selectAllArticle(int $id)
     {
-
-        $requete_prepare = $this->connexion->prepare(
-            "SELECT *  FROM Article WHERE Id = :id"
+        
+        $stmt = $this->connexion->prepare(
+            "SELECT * FROM article 
+            INNER JOIN chien
+            ON article.id_chien = chien.id
+            WHERE chien.id = :id"
         );
-        $requete_prepare->execute(array('id' => $id));
+        $stmt->execute(array('id' => $id));
 
-        $resultat = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
+        $article = $stmt->fetchAll(PDO::FETCH_CLASS, 'Article');
 
-        return $resultat;
+        return $article;
+    }
+
+    public function selectArticleById(int $id)
+    {
+
+        $stmt = $this->connexion->prepare(
+            "SELECT * FROM article WHERE article.id = :id"
+        );
+        $stmt->execute(array('id' => $id));
+
+        $article = $stmt->fetchObject('Article');
+
+        return $article;
     }
     //recuperer les donnés dee la base pour les commentaires
     public function selectAllCommentaires(int $id)
     {
 
-        $requete_prepare = $this->connexion->prepare(
-            "SELECT *  FROM Commentaires WHERE Id = :id"
+        $stmt = $this->connexion->prepare(
+            "SELECT *  FROM commentaires 
+            INNER JOIN utilisateur
+            ON commentaires.user_id = utilisateur.id
+            INNER JOIN article
+            ON commentaires.id_Article = article.id
+            WHERE article.id = :id"
         );
-        $requete_prepare->execute(array('id' => $id));
+        $stmt->execute(array('id' => $id));
 
-        $resultat = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
+        $resultat = $stmt->fetchAll(PDO::FETCH_CLASS, 'Commentaire');
 
         return $resultat;
     }
+
+function getOptimalCost($timeTarget)
+{ 
+    $cost = 9;
+    do {
+        $cost++;
+        $start = microtime(true);
+        password_hash("test", PASSWORD_BCRYPT, ["cost" => $cost]);
+        $end = microtime(true);
+    } while (($end - $start) < $timeTarget);
     
+    return $cost;
+    }
+
 }  
 
 
@@ -96,11 +156,11 @@ class Connexion
 //         $wellDone = true;
 
 //         try {
-//             $requete_prepare = $this->connexion->prepare(
+//             $stmt = $this->connexion->prepare(
 //                 "INSERT INTO Hobby (Type) values (:hobby)"
 //             );
 
-//             $requete_prepare->execute(
+//             $stmt->execute(
 //                 array('hobby' => "$hobby")
 //             );
 //         } catch (Exception $e) {
@@ -110,11 +170,11 @@ class Connexion
 
 
 
-//         $requete_prepare = $this->connexion->prepare(
+//         $stmt = $this->connexion->prepare(
 //             "INSERT INTO Musique (Type) values (:style)"
 //         );
 
-//         $requete_prepare->execute(
+//         $stmt->execute(
 //             array('style' => "$style")
 //         );
 //     }
@@ -125,13 +185,13 @@ class Connexion
 //         $id = null;
 
 //         try {
-//             $requete_prepare = $this->connexion->prepare(
+//             $stmt = $this->connexion->prepare(
 //                 "INSERT INTO Personne (Nom, Prenom,URL_Photo,Date_Naissance, Status_couple)
 //         VALUES (:nom,:prenom,:url_photo, :date_naissance,:status_couple )"
 //             );
 
 
-//             $requete_prepare->execute(
+//             $stmt->execute(
 //                 array('nom' => $nom, 'prenom' => $prenom, 'url_photo' => $url_photo, 'date_naissance' => $date_naissance, 'status_couple' => $status_couple)
 //             );
 
@@ -149,12 +209,12 @@ class Connexion
 //     {
 
 
-//         $requete_prepare = $this->connexion->prepare(
+//         $stmt = $this->connexion->prepare(
 //             "SELECT id, Type FROM Hobby"
 //         );
-//         $requete_prepare->execute();
+//         $stmt->execute();
 
-//         $resultat = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
+//         $resultat = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 //         return $resultat;
 
@@ -169,12 +229,12 @@ class Connexion
 
 
 
-//         $requete_prepare = $this->connexion->prepare(
+//         $stmt = $this->connexion->prepare(
 //             "SELECT id, Type FROM Musique"
 //         );
-//         $requete_prepare->execute();
+//         $stmt->execute();
 
-//         $resultat = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
+//         $resultat = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 //         return $resultat;
 
@@ -183,9 +243,9 @@ class Connexion
 //     public function selectPersonnes()
 //     {
 
-//         $requete_prepare = $this->connexion->prepare("SELECT * FROM Personne ");
-//         $requete_prepare->execute();
-//         $resultat = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
+//         $stmt = $this->connexion->prepare("SELECT * FROM Personne ");
+//         $stmt->execute();
+//         $resultat = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 //         return $resultat;
 
@@ -197,14 +257,14 @@ class Connexion
 //     {
 
 
-//         $requete_prepare = $this->connexion->prepare(
+//         $stmt = $this->connexion->prepare(
 
 //             "SELECT * FROM Personne WHERE Id = :id"
 //         );
 
-//         $requete_prepare->execute(array("id" => $id));
+//         $stmt->execute(array("id" => $id));
 
-//         $resultat = $requete_prepare->fetch(PDO::FETCH_OBJ);
+//         $resultat = $stmt->fetch(PDO::FETCH_OBJ);
 
 
 //         return $resultat;
@@ -218,13 +278,13 @@ class Connexion
 
 
 
-//         $requete_prepare = $this->connexion->prepare(
+//         $stmt = $this->connexion->prepare(
 
 //             "SELECT * FROM Personne WHERE LOWER (nom) like LOWER (:nom) OR LOWER (Prenom) like LOWER (:prenom)");
 
-//         $requete_prepare->execute(array("nom"=>"%$pattern%", "prenom"=>"%$pattern%"));
+//         $stmt->execute(array("nom"=>"%$pattern%", "prenom"=>"%$pattern%"));
 
-//         $resultat = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
+//         $resultat = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 //         return $resultat;
 
@@ -237,13 +297,13 @@ class Connexion
 
 
 
-//         $requete_prepare = $this->connexion->prepare(
+//         $stmt = $this->connexion->prepare(
 
 //             "SELECT * FROM Personne WHERE LOWER (nom) like LOWER (:nom) OR LOWER (Prenom) like LOWER (:prenom)");
 
-//         $requete_prepare->execute(array("nom"=>"%$pattern%", "prenom"=>"%$pattern%"));
+//         $stmt->execute(array("nom"=>"%$pattern%", "prenom"=>"%$pattern%"));
 
-//         $resultat = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
+//         $resultat = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 //         return $resultat;
 
@@ -254,31 +314,31 @@ class Connexion
 
 //     public function getPersonneHobby($personneId)
 //     {
-//         $requete_prepare = $this->connexion->prepare(
+//         $stmt = $this->connexion->prepare(
 //             "SELECT Type from Hobby h
 //             INNER JOIN RelationHobby rh ON rh.Hobby_Id = h.Id
 //             WHERE rh.Personne_Id= :id"
 //         );
-//         $requete_prepare->execute(array("id" => $personneId));
-//         $hobbies = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
+//         $stmt->execute(array("id" => $personneId));
+//         $hobbies = $stmt->fetchAll(PDO::FETCH_OBJ);
 //         return $hobbies;
 //     }
 
 //     public function getPersonneMusique($personneId)
 //     {
-//         $requete_prepare = $this->connexion->prepare(
+//         $stmt = $this->connexion->prepare(
 //             "SELECT Type from Musique m
 //             INNER JOIN RelationMusique rm ON rm.Musique_Id = m.Id
 //             WHERE rm.Personne_Id= :id"
 //         );
-//         $requete_prepare->execute(array("id" => $personneId));
-//         $musique = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
+//         $stmt->execute(array("id" => $personneId));
+//         $musique = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 //         return $musique;
 //     }
 //     public function getRelationPersonneAll($relationId )
 //     {
-//         $requete_prepare = $this->connexion->prepare(
+//         $stmt = $this->connexion->prepare(
 //              "SELECT * Type from RelationPersonne rp
 //               INNER JOIN Personne p ON rp.Relation_Id = p.Id
 //               WHERE rp.Personne_Id= :id");
@@ -286,14 +346,14 @@ class Connexion
 
 
         
-//         $requete_prepare->execute(array("id" => $relationId));
-//         $relationpersonne = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
+//         $stmt->execute(array("id" => $relationId));
+//         $relationpersonne = $stmt->fetchAll(PDO::FETCH_OBJ);
 //         return $relationpersonne;
 //     }
 
 //     public function getRelationPersonne($relationId )
 //     {
-//         $requete_prepare = $this->connexion->prepare(
+//         $stmt = $this->connexion->prepare(
 
 //               "SELECT P2.ID, P2.Nom, P2.Prenom, P2.URL_Photo, RP.Type FROM Personne P2, RelationPersonne RP
 //               INNER JOIN Personne P1 ON RP.Personne_Id = P1.ID
@@ -303,8 +363,8 @@ class Connexion
 
 
         
-//         $requete_prepare->execute(array("id" => $relationId));
-//         $relationpersonne = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
+//         $stmt->execute(array("id" => $relationId));
+//         $relationpersonne = $stmt->fetchAll(PDO::FETCH_OBJ);
 //         return $relationpersonne;
 //     }
 
@@ -314,7 +374,7 @@ class Connexion
 //     {
 
 
-//         $requete_prepare = $this->connexion->prepare(
+//         $stmt = $this->connexion->prepare(
 //             "INSERT INTO RelationHobby (Personne_Id,Hobby_Id)
 //             VALUES (:personne_id,:hobby_id)"
 //         );
@@ -322,7 +382,7 @@ class Connexion
 //         // executer la requete pour chaque hobbyId
 //         foreach ($HobbyIds as $hobbie) {
 
-//             $requete_prepare->execute(array("personne_id" => $personneId, "hobby_id" => $hobbie));
+//             $stmt->execute(array("personne_id" => $personneId, "hobby_id" => $hobbie));
 
 
 //         }
@@ -333,7 +393,7 @@ class Connexion
 //     { 
 
 
-//         $requete_prepare = $this->connexion->prepare(
+//         $stmt = $this->connexion->prepare(
 //             "INSERT INTO RelationMusique (Personne_Id,Musique_Id)
 //             VALUES (:personne_id,:musique_id)"
 //         );
@@ -341,7 +401,7 @@ class Connexion
 //         // executer la requete pour chaque musiqueId
 //         foreach ($MusiquesIds as $musique) {
 
-//             $requete_prepare->execute(array("personne_id" => $personneId, "musique_id" => $musique));
+//             $stmt->execute(array("personne_id" => $personneId, "musique_id" => $musique));
 
 
 //         }
@@ -352,13 +412,13 @@ class Connexion
 //     {
 
 
-//         $requete_prepare = $this->connexion->prepare(
+//         $stmt = $this->connexion->prepare(
 //             "INSERT INTO RelationPersonne (Personne_Id,Relation_Id,Type)
 //             VALUES (:personne_id,:relation_id,:type)"
 //         );
 
 
-//         $requete_prepare->execute(array("personne_id" => $personneId, "relation_id" => $RelationsIds, "type" => $Type));
+//         $stmt->execute(array("personne_id" => $personneId, "relation_id" => $RelationsIds, "type" => $Type));
 
 
 

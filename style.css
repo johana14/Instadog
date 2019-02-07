@@ -1,10 +1,11 @@
-body {
+body, html {
 background: black;
 font-family: sans-serif;
-line-height: 1.7;
 color: black;
 margin:0px;
-padding: 0px; 
+padding: 0px;
+height: 100vh;
+
 }
 
 .cover-container {
@@ -53,10 +54,6 @@ background: rgba(0, 0, 0, 0.2) !important;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-}
-
-.home-vh-100{
-    height: 100vh;
 }
 
 .cover .btn, .btn-primary-profil, .btn-secondary-profil {
@@ -155,6 +152,10 @@ background: rgba(0, 0, 0, 0.2) !important;
     margin-top: 21px;
 }
 
+ul, li{
+    list-style: none;
+}
+
 /* login and signup */
 
 @media screen and (max-width: 960px){
@@ -166,8 +167,10 @@ background: rgba(0, 0, 0, 0.2) !important;
 }
 
 /* footer */
-.p-5 {
+.bottom-box {
     background: #000;
     color: #fff;
     font-size: 14px;
 }
+
+

@@ -4,7 +4,7 @@ class Chien{
 
     private $id;
     private $nomElevage;
-    private $surnom;
+    private $surNptohoom;
     private $dateNaissance;
     private $sexe;
     private $race;
@@ -20,7 +20,7 @@ class Chien{
     }
 
     public function getSurnom(){
-        return $this->surnom;
+        return $this->surNom;
     }
 
     public function getDateNaissance(){

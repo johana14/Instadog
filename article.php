@@ -1,3 +1,9 @@
+<?PHP
+require_once ('connexion.php');
+$appliBD = new Connexion();
+$articles = $appliBD->selectArticleById(($_GET["id"]));
+$commentaires = $appliBD->selectAllCommentaires(($_GET["id"]));
+?>
 <!DOCTYPE html>
 <html>
 
@@ -40,39 +46,15 @@
     <div class="row align-items-center justify-content-center flex-fill">
       <!-- Post Content Column -->
       <div class="col-lg-12">
-        <!-- Title -->
-        <h1 class="mt-4 text-center">Post Title</h1>
-        <!-- Author -->
         <hr>
         <!-- Date/Time -->
-        <p>Posted on January 1, 2018 at 12:00 PM</p>
+        <p>Posted on <?php echo $articles->getDatePublication();?></p>
         <hr>
         <!-- Preview Image -->
         <div class="row">
-          <div class="col-md-4 col-sm-4"><img class="img-fluid mx-auto d-block" src="http://placehold.it/300" alt=""></div>
+          <div class="col-md-4 col-sm-4"><img class="img-fluid mx-auto d-block" src="<?php echo $articles->getPhoto();?>" alt=""></div>
           <div class="col-md-8 col-sm-8">
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut,
-              error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae
-              laborum minus inventore?</p>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut,
-              error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae
-              laborum minus inventore?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste
-              ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus,
-              voluptatibus.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde
-              eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis.
-              Enim, iure!</p>
-            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <blockquote class="blockquote">
-              <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>
-              </footer>
-            </blockquote>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas
-              placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo,
-              aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam
-              recusandae? Qui, necessitatibus, est!</p>
+            <p class="lead"><?php echo $articles->getTexte();?></p>
           </div>
         </div>
         <hr>
@@ -90,39 +72,16 @@
           </div>
         </div>
         <!-- Single Comment -->
+        <?php
+          foreach ($commentaires as $commentaire)
+          {
+            echo'
         <div class="media mb-4">
-          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
           <div class="media-body">
-            <h5 class="mt-0">Commenter Name</h5> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-            scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce
-            condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+            <h5 class="mt-0">Commenter Name</h5><p>'.$commentaire->getTexteCommentaire().'</p>
           </div>
         </div>
-        <!-- Comment with nested comments -->
-        <div class="media mb-4">
-          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-          <div class="media-body">
-            <h5 class="mt-0">Commenter Name</h5> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-            scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce
-            condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. <div class="media mt-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-              <div class="media-body">
-                <h5 class="mt-0">Commenter Name</h5> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-                scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-                Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              </div>
-            </div>
-            <div class="media mt-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-              <div class="media-body">
-                <h5 class="mt-0">Commenter Name</h5> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-                scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-                Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        ';}?>
     </div>
   </div>
   <footer class="p-5">

@@ -1,3 +1,9 @@
+<?PHP
+require_once ('connexion.php');
+$appliBD = new Connexion();
+$monchien = $appliBD->getChienById(($_GET["chien"]));
+$articles = $appliBD->selectAllArticle(($_GET["chien"]));
+?>
 <!DOCTYPE html>
 <html>
 
@@ -47,45 +53,35 @@
           article</a></div>
     </div>
     <div class="row">
-      <div class="col-sm-6 col-md-6 col-lg-6"><img class="img-fluid d-block col-lg-12" src="images/chien1.jpeg"></div>
+      <div class="col-sm-6 col-md-6 col-lg-6"><img class="img-fluid d-block col-lg-12" src="<?php echo $monchien->getPhoto();?>"></div>
       <div class="col-sm-6 col-md-6 col-lg-6" id="details">
         <ul class="list-group">
-          <li class="list-group-item-success"><i class="mr-2"></i>Nom d'élevage:</li>
-          <li class="list-group-item-info"><i class="mr-2"></i> Surnom :</li>
-          <li class="list-group-item-success"><i class="mr-2"></i> Date de naissance :</li>
-          <li class="list-group-item-info"><i class="mr-2"></i> Sexe :</li>
-          <li class="list-group-item-success"><i class="mr-2"></i> Race</li>
+        <li class="list-group-item-success"><i class="mr-2"></i>Nom d'élevage: <?php echo $monchien->getNomElevage();?></li>
+        <li class="list-group-item-info"><i class="mr-2"></i> Surnom : <?php echo $monchien->getsurNom();?></li>
+        <li class="list-group-item-success"><i class="mr-2"></i> Date de naissance : <?php echo $monchien->getDateNaissance();?></li>
+        <li class="list-group-item-info"><i class="mr-2"></i> Sexe : <?php echo $monchien->getSexe();?></li>
+        <li class="list-group-item-success"><i class="mr-2"></i> Race : <?php echo $monchien->getRace();?></li>
         </ul>
-        <div class="row" id="newArticle">
-          <h5 class="col-md-12 col-lg-12">Recent Article</h5>
-          <div class="media col-lg-4">
+        <div class="row mt-3" id="newArticle">
+        <h5 class="col-md-12 col-lg-12">Recent Article</h5>
+        <?php
+          foreach ($articles as $article)      
+            echo'
+          <div class="media col-lg-4 mt-2">
             <a href="#" class="pull-left">
-              <img src="images/chien2.jpeg" class="media-photo col-lg-12">
+              <img src="'.$article->getPhoto().'" class="media-photo col-lg-12">
             </a>
           </div>
-          <a href="article.html">
-          <div class="preview-article col-lg-8 text-lg-right">
-            <span class="media-meta text-lg-right">Febrero 13, 2016</span>
-            <p class="summary">"Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p></a>
+          <a href=article.php?id='.$article->getId().'>
+          <div class="preview-article col-lg-8 text-lg-right mt-2">
+            <span class="media-meta text-lg-right">'.$article->getDatePublication().'</span>
+            <p class="summary">"'.$article->getTexte().'"</p></a>
           </div>
-        </div>
-        <div class="row" id="newArticle2">
-          <h5 class="col-md-12 col-lg-12"></h5>
-          <div class="media col-lg-4">
-            <a href="#" class="pull-left">
-              <img src="images/chien2.jpeg" class="media-photo col-lg-12">
-            </a>
-          </div>
-          <a href="article.html">
-          <div class="preview-article col-lg-8 text-lg-right">
-            <span class="media-meta text-lg-right">Febrero 13, 2016</span>
-            <p class="summary">"Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p></a>
-          </div>
-        </div>
-      </div>
+          ';?>
+        </div>  
     </div>
   </div>
-  <footer class="p-5 mt-5">
+  
     <div class="container">
       <div class="row align-items-center text-center">
         <div class="col-sm-12 cold-md-12 col-lg-12">
@@ -93,7 +89,7 @@
         </div>
       </div>
     </div>
-  </footer>
+  
 </body>
 
 </html>

@@ -3,7 +3,7 @@
 class Commentaire{
 
     private $id;
-    private $texteCommentaire;
+    private $TexteDuCommentaire;
     private $dateCommentaire;
 
     public function getId(){
@@ -11,7 +11,7 @@ class Commentaire{
     }
 
     public function getTexteCommentaire(){
-        return $this->texteCommentaire;
+        return $this->TexteDuCommentaire;
     }
 
     public function getDateCommentaire(){

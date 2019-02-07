@@ -5,11 +5,11 @@ require 'connexion.php';
 $appliDB = new Connexion();
     
 //tester que la creation de l'objet connexion se fait bien et qu'il y pas d'erreur
-    /* if ($appliDB->getConnexion() !=null){
-       echo "succes";
-      } else {
-       echo "echoue";
-     } */
+/* if ($appliDB->getConnexion() !=null){
+   echo "succes";
+    } else {
+      echo "echoue";
+    } */
 
       //tester le Select Utilisateur Instadog
      /*$result = $appliDB->selectAllUtilisateur(1);
@@ -20,12 +20,23 @@ $appliDB = new Connexion();
      var_dump($result)["1"];*/
       
      //tester et afficher les données dans l'article
-     $result = $appliDB->selectAllArticle(1);
-     var_dump($result)["1"];
+     /*$result = $appliDB->selectAllArticle(1);
+     var_dump($result)["1"];*/
+
+     /*$result = $appliDB->selectArticleById(1);
+     var_dump($result)["1"];*/
      
      //tester et afficher les infos des commentaires
-     /*$result = $appliDB->selectAllCommentaires(1);
+     /*$result = $appliDB->selectAllCommentaires(2);
+     var_dump($result)["2"];*/
+
+     /*$result = $appliDB->selectAllImages(1);
      var_dump($result)["1"];*/
+
+     /*$result = $appliDB->getChienById(1);
+     var_dump($result)["1"];*/
+
+
 
     
     

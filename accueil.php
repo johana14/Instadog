@@ -32,7 +32,7 @@
     </div>
   </nav>
   <!-- Page Content -->
-  <div class="container-fluid home-vh-100 text-center d-flex flex-column">
+  <div class="container-fluid vh-100 text-center d-flex flex-column">
       <div class="row cover align-items-center justify-content-center flex-fill">
           <div class="home-text mx-auto">
             <h1 class="home-heading text-white mb-4">WELCOME</h1>

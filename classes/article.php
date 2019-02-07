@@ -2,11 +2,16 @@
 
 class Article{
 
+    private $id;
     private $photo;
     private $texte;
     private $listeCommentaires;
-    private $datePublication;
+    private $dateDePublication;
 
+    public function getId(){
+        return $this->id;
+    }
+    
     public function getPhoto(){
         return $this->photo;
     }
@@ -19,11 +24,11 @@ class Article{
         return $this->listeCommentaires;
     }
 
-    public function getListe(){
+    public function getNaissance(){
         return $this->dateNaissance;
     }
 
     public function getDatePublication(){
-        return $this->datePublication;
+        return $this->dateDePublication;
     }
 }
