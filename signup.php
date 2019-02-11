@@ -1,3 +1,7 @@
+<?php
+require_once('connexion.php');
+$appliBD = new Connexion();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -40,7 +44,7 @@
   <!-- Page Content -->
   <div class="container-fluid cover-container text-center d-flex flex-column">
       <div class="row bg align-items-center justify-content-center flex-fill">
-      <form class="mx-auto" action="profil_utilisateur.php" method="POST">
+      <form class="mx-auto" action="signup-formulaire.php" method="POST">
         <h1>SIGNUP</h1>
         <div class="form-group col-12">
           <label class="inputuserName">userName</label>
@@ -50,10 +54,13 @@
           <label class="inputPassword">Password</label>
           <input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password">
         </div>
-        
+        <div class="form-group col-12">
+          <label class="inputPassword">Confirm Password</label>
+          <input type="password" class="form-control" name="password-verify" id="inputPassword" placeholder="Password">
+        </div>
         <div class="col-lg-12 text-center mt-4">
-          <button type="reset" class="btn btn-primary">Cancel</button><a class="" onclick="location.href='accueil.php'"></a>
-          <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+          <button type="reset" class="btn btn-secondary"><a href="accueil.php">Cancel</button></a>
+          <button type="submit" class="btn btn-primary" name="register">Register</button>
         </div>
       </form>
     </div>

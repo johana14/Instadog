@@ -1,7 +1,31 @@
+<?PHP
+require_once ('connexion.php');
+$appliBD = new Connexion();
+$user = $appliBD->getUserChien(($_GET["id"]));
+// On démarre la session (ceci est indispensable dans toutes les pages de notre section membre)
+session_start ();
+// On récupère nos variables de session
+if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) {
 
+	// On teste pour voir si nos variables ont bien été enregistrées
+	echo '<html>';
+	echo '<head>';
+	echo '<title>Page de notre section membre</title>';
+	echo '</head>';
+
+	echo '<body>';
+	echo 'Votre login est '.$_SESSION['login'].' et votre mot de passe est '.$_SESSION['pwd'].'.';
+	echo '<br />';
+
+	// On affiche un lien pour fermer notre session
+	echo '<a href="./logout.php">Déconnection</a>';
+}
+else {
+	echo 'Les variables ne sont pas déclarées.';
+}
+?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -32,7 +56,7 @@
                         <a class="nav-link" href="gallery.html">Search</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="logout.php">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -49,15 +73,15 @@
                     <form role="user-form" action="" method="POST">
                         <div class="form-group">
                             <label class="form-label form-control-label">Username</label>
-                            <input class="form-control" type="text" value="">
+                            <input class="form-control" type="text" value="<?php echo $user->getNomUtilisateur();?>">
                         </div>
                         <div class="form-group">
                             <label class="form-label form-control-label">Password</label>
-                            <input class="form-control" type="password" value="">
+                            <input class="form-control" type="password" value="<?php echo $user->getMotDePasse();?>">
                         </div>
                         <div class="form-group">
                             <label class="form-label form-control-label">Confirm password</label>
-                            <input class="form-control" type="password" value="">
+                            <input class="form-control" type="password" value="<?php echo $user->getMotDePasse();?>">
                         </div>
                         <div class="form-group">
                             <label class="form-label form-control-label"></label>

@@ -1,18 +1,17 @@
-<?PHP
-require_once ('connexion.php');
+<?php
+require_once('connexion.php');
 $appliBD = new Connexion();
 
-$data = (!empty($_GET["chien"]))? $_GET["chien"]:1; 
-$chieenid = $appliBD->getChienById(intval($data));
-
-// Si il y a un envoi de données
-if($_POST) {
-  $appliBD->inscription_chien();
+if(isset($_POST['add'])){
+  // SI IL N'A PAS DE CHAMPS VIDES
+  if (!empty($_POST['nomelevage']) and !empty($_POST['surnom']) and !empty($_POST['datenaissance']
+  and !empty($_POST['race']) and !empty($_POST['photo']))) {
+  // On l'ajoute dans la base de données
+    $appliBD->insertChien($_POST['nomelevage'], $_POST['surnom'], $_POST['datenaissance'],$_POST['sexe'],
+    $_POST['race'], $_POST['photo']);
+    header("Location: gallery.php");
+  }
 }
-// Si il n'y a pas d'utilisateur ou si il y une lettre alors page 404
-/*if($chien == null && $_GET["chien"] != int) {
-  header("location:accueil.php");
-}*/
 ?>
 <!DOCTYPE html>
 <html>
@@ -92,7 +91,7 @@ if($_POST) {
           <label class="custom-file-label" for="customFile"></label>
         </div>
         <button type="submit" class="btn btn-secondary mt-2">Cancel</button>
-        <button type="submit" class="btn btn-primary mt-2">Submit</button>
+        <button type="submit" class="btn btn-primary mt-2" name="add">Submit</button>
       </form>
     </div>
   </div>

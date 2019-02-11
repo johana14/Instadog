@@ -1,5 +1,10 @@
+<?php
+require_once('connexion.php');
+$appliBD = new Connexion();
+// On démarre la session
+session_start ();
+?>
 <!DOCTYPE html>
-
 <html>
 
 <head>
@@ -55,7 +60,7 @@
           <label><input type="checkbox"> Remember me</label>
         </div>
         <div class="col-lg-12 text-center mt-4">
-          <button type="submit" class="btn btn-primary">login</button><a class="" href="profil_utilisateur.html"></a>
+          <button type="submit" class="btn btn-primary" name="login">login</button>
         </div>
       </form>
     </div>

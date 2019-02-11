@@ -2,7 +2,7 @@
 require_once ('connexion.php');
 $appliBD = new Connexion();
 $monchien = $appliBD->getChienById(($_GET["chien"]));
-$articles = $appliBD->selectAllArticle(($_GET["chien"]));
+$articles = $appliBD->getAllArticle(($_GET["chien"]));
 ?>
 <!DOCTYPE html>
 <html>

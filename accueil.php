@@ -24,9 +24,9 @@
       <div class="collapse navbar-collapse " id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           
-          <li class="nav-item active"><a class="nav-link" href="gallery.html">Search <span class="sr-only"></span></a></li>
-          <li class="nav-item active"><a  class= "nav-link" href="signup.html">Sign up <span class="sr-only"></span></a></li>
-          <li class="nav-item active"><a class= "nav-link" href="login.html">Log In <span class="sr-only"></span></a></li>
+          <li class="nav-item active"><a class="nav-link" href="gallery.php">Search <span class="sr-only"></span></a></li>
+          <li class="nav-item active"><a  class= "nav-link" href="signup.php">Sign up <span class="sr-only"></span></a></li>
+          <li class="nav-item active"><a class= "nav-link" href="login.php">Log In <span class="sr-only"></span></a></li>
         </ul>
       </div>
     </div>
@@ -41,9 +41,9 @@
                   <br>	Gandhi</p>
             </div>
             <p>
-              <a href="login.html" class="btn btn-primary mr-2 mb-2 col-12 col-sm-12 col-lg-3">Sign In</a>
-              <a href="signup.html" class="btn btn-primary mr-2 mb-2 col-12 col-sm-12 col-lg-3">Signup</a>
-              <a href="gallery.html" class="btn btn-primary btn-outline-white mr-2 mb-2 col-12 col-sm-12 col-lg-3">Guest</a>
+              <a href="login.php" class="btn btn-primary mr-2 mb-2 col-12 col-sm-12 col-lg-3">Sign In</a>
+              <a href="signup.php" class="btn btn-primary mr-2 mb-2 col-12 col-sm-12 col-lg-3">Signup</a>
+              <a href="gallery.php" class="btn btn-primary btn-outline-white mr-2 mb-2 col-12 col-sm-12 col-lg-3">Guest</a>
              </p>
           </div>
       </div>

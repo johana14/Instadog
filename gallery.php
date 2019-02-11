@@ -1,7 +1,7 @@
 <?PHP
 require_once ('connexion.php');
 $appliBD = new Connexion();
-$chiens = $appliBD->selectAllChien();
+$chiens = $appliBD->getAllChien();
 ?>
 <!DOCTYPE html>
 <html>
