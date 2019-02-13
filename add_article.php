@@ -1,3 +1,45 @@
+<?php
+require_once('connexion.php');
+$appliBD = new Connexion();
+
+if($_POST){
+  /*
+  * ================================
+  * Operations upon form submission.
+  * ================================
+  */
+  if(isset($_POST['addArticle'])){
+
+    /*
+    * =======================
+    * Read the posted values.
+    * =======================
+    */
+    $photo = $_FILES["articlephoto"]["name"];
+    $texte = $_POST["description"];
+    
+    /*
+    * ===================================
+    * processing the image posted values.
+    * ===================================
+    */
+    $suffixe = date("YmdHis");
+    $uploadedFileName = $_FILES["articlephoto"]["name"];
+    $uploadedFile = new SplFileInfo($uploadedFileName);
+    $fileExtension = $uploadedFile->getExtension();
+    $destinationFolder = $_SERVER['DOCUMENT_ROOT']."/projets/Instadog/";
+    $destinationName = "images/img-".$suffixe.".".$fileExtension;
+    $imageMoved = move_uploaded_file($_FILES["articlephoto"]["tmp_name"], $destinationFolder.$destinationName);
+
+      /*
+      * =====================
+      * Add Dog to database.
+      * =====================
+      */
+        $appliBD->insertArticle($destinationName, $texte, $datePublication, $id_chien);
+    }
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -24,11 +66,11 @@
       <div class="collapse navbar-collapse " id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="accueil.html">Home <span class="sr-only">(current)</span>
+            <a class="nav-link" href="accueil.php">Home <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="gallery.html">Search</a>
+            <a class="nav-link" href="gallery.php">Search</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Logout</a>
@@ -38,31 +80,24 @@
     </div>
   </nav>
   <!-- Page Content -->
-  <div class="container-fluid cover-container text-center d-flex flex-column">
-      <div class=" row align-items-center justify-content-center flex-fill mx-auto">
-        <form class="col-12" method="POST">
+  <div class="container-fluid cover-container text-center d-flex">
+      <div class="row col-12 align-items-center justify-content-center flex-fill mx-auto">
+        <form class="" method="POST" enctype="multipart/form-data">
             <h1 class="text-center">Create Post</h1>
           <div class="form-group">
-            <label for="title">Titre<span class="require">*</span></label>
-            <input type="text" class="form-control" name="title" />
-          </div>
-          <div class="form-group">
             <label for="description">Description</label>
-            <textarea rows="5" class="form-control" name="description"></textarea>
+            <textarea rows="12" class="form-control" name="description"></textarea>
           </div>
           <div class="form-group text-white">
             <p><span class="require">*</span> - required fields</p>
           </div>
           <div class="custom-file">
-            <input type="file" class="custom-file-input" id="telechargement">
             <label class="custom-file-label" for="customFile"></label>
+            <input type="file" class="custom-file-input" id="telechargement" name="articlephoto">
           </div>
-          <input type="file" class="custom-file-input" id="customFile">
-          
-
           <div class="form-group col-md-12 mt-1">
             <button type="submit" class="btn btn-secondary">Cancel</button>
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-primary" name="addArticle">Create</button>
           </div>
         </form>
       </div>

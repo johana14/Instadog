@@ -44,7 +44,7 @@ $appliBD = new Connexion();
   <!-- Page Content -->
   <div class="container-fluid cover-container text-center d-flex flex-column">
       <div class="row bg align-items-center justify-content-center flex-fill">
-      <form class="mx-auto" action="signup-formulaire.php" method="POST">
+      <form class="mx-auto" action="validation_user.php" method="POST">
         <h1>SIGNUP</h1>
         <div class="form-group col-12">
           <label class="inputuserName">userName</label>

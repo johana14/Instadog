@@ -2,27 +2,6 @@
 require_once ('connexion.php');
 $appliBD = new Connexion();
 $user = $appliBD->getUserChien(($_GET["id"]));
-// On démarre la session (ceci est indispensable dans toutes les pages de notre section membre)
-session_start ();
-// On récupère nos variables de session
-if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) {
-
-	// On teste pour voir si nos variables ont bien été enregistrées
-	echo '<html>';
-	echo '<head>';
-	echo '<title>Page de notre section membre</title>';
-	echo '</head>';
-
-	echo '<body>';
-	echo 'Votre login est '.$_SESSION['login'].' et votre mot de passe est '.$_SESSION['pwd'].'.';
-	echo '<br />';
-
-	// On affiche un lien pour fermer notre session
-	echo '<a href="./logout.php">Déconnection</a>';
-}
-else {
-	echo 'Les variables ne sont pas déclarées.';
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -70,7 +49,7 @@ else {
                 <div id="profile">
                 
             </div>
-                    <form role="user-form" action="" method="POST">
+                    <form role="user-form" method="POST">
                         <div class="form-group">
                             <label class="form-label form-control-label">Username</label>
                             <input class="form-control" type="text" value="<?php echo $user->getNomUtilisateur();?>">

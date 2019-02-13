@@ -49,7 +49,7 @@ $articles = $appliBD->getAllArticle(($_GET["chien"]));
   </div>
   <div class="container">
     <div class="row">
-      <div class="addArticle col-md-12"><a class="btn btn-primary float-right" href="add_article.html">Ajouter un
+      <div class="addArticle col-md-12"><a class="btn btn-primary float-right" href="add_article.php">Ajouter un
           article</a></div>
     </div>
     <div class="row">

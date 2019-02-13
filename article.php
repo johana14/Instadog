@@ -1,8 +1,8 @@
 <?PHP
 require_once ('connexion.php');
 $appliBD = new Connexion();
-$articles = $appliBD->selectArticleById(($_GET["id"]));
-$commentaires = $appliBD->selectAllCommentaires(($_GET["id"]));
+$articles = $appliBD->getAllArticle(($_GET["id"]));
+$commentaires = $appliBD->getArticleCommentaires(($_GET["id"]));
 ?>
 <!DOCTYPE html>
 <html>
@@ -48,7 +48,7 @@ $commentaires = $appliBD->selectAllCommentaires(($_GET["id"]));
       <div class="col-lg-12">
         <hr>
         <!-- Date/Time -->
-        <p>Posted on <?php echo $articles->getDatePublication();?></p>
+        <p>Posted on p>
         <hr>
         <!-- Preview Image -->
         <div class="row">

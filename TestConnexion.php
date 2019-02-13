@@ -35,8 +35,23 @@ $appliDB = new Connexion();
 
      /*$result = $appliDB->getChienById(1);
      var_dump($result)["1"];*/
-
-
+     
+     // Start the session
+     session_start();
+     ?>
+     <!DOCTYPE html>
+     <html>
+     <body>
+     
+     <?php
+     // Set session variables
+    $_SESSION['username'] = 'username';
+    $_SESSION['password']   = 'password';
+    $_SESSION['id']     = 'id';
+     echo "Session variables are set.";
+     
+     
+     
 
     
     
@@ -152,7 +167,7 @@ $appliDB = new Connexion();
 
 //   echo "</br>"
   
-$appliDB->insertPersonne("jayax","digital2018");
+/*$appliDB->insertPersonne("jayax","digital2018");*/
 /*var_dump($hash);*/
 
 
@@ -249,6 +264,8 @@ echo "Valeur de 'cost' la plus appropriée : " . $cost;*/
  
 // ?>
  
+ </body>
+     </html>
 
 
         

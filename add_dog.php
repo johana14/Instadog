@@ -2,16 +2,55 @@
 require_once('connexion.php');
 $appliBD = new Connexion();
 
-if(isset($_POST['add'])){
-  // SI IL N'A PAS DE CHAMPS VIDES
-  if (!empty($_POST['nomelevage']) and !empty($_POST['surnom']) and !empty($_POST['datenaissance']
-  and !empty($_POST['race']) and !empty($_POST['photo']))) {
-  // On l'ajoute dans la base de données
-    $appliBD->insertChien($_POST['nomelevage'], $_POST['surnom'], $_POST['datenaissance'],$_POST['sexe'],
-    $_POST['race'], $_POST['photo']);
-    header("Location: gallery.php");
-  }
-}
+if($_POST){
+  /*
+  * ================================
+  * Operations upon form submission.
+  * ================================
+  */
+  if(isset($_POST['add'])){
+
+    /*
+    * =======================
+    * Read the posted values.
+    * =======================
+    */
+    $nomElevage = $_POST["nomElevage"];
+    $surNom = $_POST["surNom"];
+    $dateNaissance = $_POST["dateNaissance"];
+    $sexe = $_POST["sexe"];
+    $race = $_POST["race"];
+    $photo = $_FILES["photo"]["name"];
+    /*
+    * ===================================
+    * processing the image posted values.
+    * ===================================
+    */
+    $suffixe = date("YmdHis");
+    $uploadedFileName = $_FILES["photo"]["name"];
+    $uploadedFile = new SplFileInfo($uploadedFileName);
+    $fileExtension = $uploadedFile->getExtension();
+    $destinationFolder = $_SERVER['DOCUMENT_ROOT']."/projets/Instadog/";
+    $destinationName = "images/img-".$suffixe.".".$fileExtension;
+    $imageMoved = move_uploaded_file($_FILES["photo"]["tmp_name"], $destinationFolder.$destinationName);
+
+      /*
+      * =====================
+      * Add Dog to database.
+      * =====================
+      */
+        $appliBD->insertChien($nomElevage , $surNom, $dateNaissance, $sexe,
+        $race, $user_id, $destinationName);
+      }
+  }/*
+          $nomChien = $_POST["nomChien"];
+          $surnomChien = $_POST["surnomChien"];
+          $raceChien = $_POST["raceChien"];
+          $poidChien = $_POST["poidChien"];
+          $imageChien = $_FILES["imageChien"]["name"];
+
+          $appliBD->updateDogInfo($nomChien, $surnomChien, $destinationName, $raceChien, $poidChien, $idChien);*/
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,14 +78,14 @@ if(isset($_POST['add'])){
       <div class="collapse navbar-collapse " id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="accueil.html">Home <span class="sr-only">(current)</span>
+            <a class="nav-link" href="accueil.php">Home <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="gallery.html">Search</a>
+            <a class="nav-link" href="gallery.php">Search</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.html">login</a>
+            <a class="nav-link" href="login.php">login</a>
           </li>
         </ul>
       </div>
@@ -55,22 +94,22 @@ if(isset($_POST['add'])){
   <!-- Page Content -->
   <div class="container-fluid cover-container text-center d-flex flex-column">
       <div class="row bg align-items-center justify-content-center flex-fill">
-      <form class="mx-auto" action="profil_chien.php" method="POST">
+      <form class="mx-auto" method="POST" enctype="multipart/form-data">
           <h1>Add Dog</h1>
         <div class="form-group col-12">
           <label>Add Dog</label>
-          <input type="text" class="form-control" name="nomelevage" placeholder="nameBreeding">
+          <input type="text" class="form-control" name="nomElevage" placeholder="nameBreeding">
           <small class="form-text text-muted">
             We'll never share your email with anyone else.
           </small> 
         </div>
         <div class="form-group col-12"> 
           <label>Nickname</label> 
-          <input type="text" class="form-control" name="surnom" placeholder="Nickname">
+          <input type="text" class="form-control" name="surNom" placeholder="Nickname">
         </div>
         <div class="form-group col-12"> 
           <label>Birthday</label> 
-          <input type="date" class="form-control" name="datenaissance" placeholder="Date of birthday">
+          <input type="date" class="form-control" name="dateNaissance" placeholder="Date of birthday">
         </div>
         <div class="form-group col-12"> 
           <label>Breed</label> 
@@ -79,10 +118,10 @@ if(isset($_POST['add'])){
         <div class="form-group col-12"> 
           <label>Gender</label>
           <div class="radio">
-            <label></label><input class="form-check-input" type="radio" name="sexe" id="legendRadio1" value="1">Male</label>
+            <label></label><input class="form-check-input" type="radio" name="sexe" id="legendRadio1" value="male">Male</label>
           </div>
           <div class="radio">
-            <label><input class="form-check-input" type="radio" name="sexe" id="legendRadio2" value="2">Female</label>
+            <label><input class="form-check-input" type="radio" name="sexe" id="legendRadio2" value="female">Female</label>
           </div>
         </div>
         <h2>Add Dog picture</h2>

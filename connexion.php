@@ -16,7 +16,7 @@ class Connexion
         $PARAM_port = '3306'; // le port de connexion à la base de données
         $PARAM_nom_bd = 'InstaDog'; // le nom de la base de données
         $PARAM_utilisateur = 'adminInstaDog'; // Le nom d'utilisateur pour se connecter
-        $PARAM_mot_passe = 'digital2018'; // le mot de passe de l'utilisateur pour se connecter
+        $PARAM_mot_passe = 'Inst@D0g'; // le mot de passe de l'utilisateur pour se connecter
         try {
             $this->connexion = new PDO('mysql:host=' . $PARAM_hote . ';dbname=' . $PARAM_nom_bd, $PARAM_utilisateur, $PARAM_mot_passe);
         } catch (Exception $e) {
@@ -39,75 +39,74 @@ class Connexion
 ----------------***************************---------------*/
     public function getUserChien($id)
     {
-        $stmt = $this->connexion->prepare("SELECT *  FROM utilisateur WHERE id = :id");
-        $stmt->execute(array(
-            'id' => $id,
-        ));
+        $stmt = $this->connexion->prepare("SELECT *  FROM Utilisateur WHERE id = :id");
+        $stmt->execute(array('id' => $id,));
         $utilisateur = $stmt->fetchObject('Utilisateur');
         return $utilisateur;
     }
 
-    public function getUsersByusername($username)
+    public function getUserinfo($username)
     {
         $stmt = $this->connexion->prepare(
-            "SELECT *FROM utilisateur WHERE username = :username");
+            "SELECT * FROM Utilisateur WHERE username = :username");
         $stmt->execute(array('username' => $username));   
-        $userProfile = $stmt->fetchObject("Profil");
+        $userProfile = $stmt->fetchObject("Utilisateur");
         return $userProfile;
-    }
-
-    public function getChienById(int $id)
-    {
-        $stmt = $this->connexion->prepare("SELECT *  FROM chien
-            INNER JOIN utilisateur
-            ON chien.user_id = utilisateur.id
-            WHERE chien.id = :id");
-        $stmt->execute(array('id' => $id));
-        $chien = $stmt->fetchObject('Chien');
-        return $chien;
     }
 
     public function insertUser($username, $password, $dateDernierConnexion)
     {
         $stmt = $this->connexion->prepare(
-            "INSERT INTO utilisateur (username, password, dateDernierConnexion)
+            "INSERT INTO Utilisateur (username, password, dateDernierConnexion)
             VALUES (:username, :password, :dateDernierConnexion)");
         $stmt->execute(array(
             'username' => $username,
             'password' => $password,
             'dateDernierConnexion' => $dateDernierConnexion));
-        $id = $this->connexion->lastInsertId();
+            $id = $this->connexion->lastInsertId();
+            header("Location: profil_utilisateur.php?id=$id");
+
     }
 
 /* -------------***************************----------------
 ----------------******FONCTIONS CHIEN******----------------
 ----------------***************************---------------*/
 
-
     public function getAllChien()
     {
-        $stmt = $this->connexion->prepare("SELECT *  FROM chien
-            INNER JOIN utilisateur
+        $stmt = $this->connexion->prepare("SELECT *  FROM Chien
+            INNER JOIN Utilisateur
             ON chien.user_id = utilisateur.id");
         $stmt->execute();
         $chien = $stmt->fetchAll(PDO::FETCH_CLASS, 'Chien');
         return $chien;
     }
 
-    public function insertChien ($nomElevage, $surNom, $dateNaissance, $sexe, $race, $photo){
-        // on prépare notre requête 
+    public function getChienById($id)
+    {
+        $stmt = $this->connexion->prepare("SELECT *  FROM Chien
+            INNER JOIN Utilisateur
+            ON Chien.user_id = Utilisateur.id
+            WHERE Chien.id = :id");
+        $stmt->execute(array('id' => $id));
+        $chien = $stmt->fetchObject('Chien');
+        return $chien;
+    }
+
+    public function insertChien ($nomElevage, $surNom, $dateNaissance, $sexe, $race, $user_id, $photo){
         $stmt = $this->connexion->prepare(
-            "INSERT INTO chien (nomElevage, surNom, dateNaissance, sexe, race, photo) 
-            value (:nomElevage, :surNom, :dateNaissance, :sexe, :race, :photo)");
-        // on exécute la requête 
+            "INSERT INTO Chien (nomElevage, surNom, dateNaissance, sexe, race, user_id, photo) 
+            value (:nomElevage, :surNom, :dateNaissance, :sexe, :race, :user_id, :photo)");
         $stmt->execute (array (
             'nomElevage' => $nomElevage,
             'surNom' => $surNom,
             'dateNaissance' => $dateNaissance,
             'sexe' => $sexe,
             'race' => $race,
-            'photo' => $photo));
+            'user_id' => $user_id,
+            'photo' => $photo,));
         $id = $this->connexion->lastInsertId();
+        header("Location: profil_chien.php?chien=$id");
         return $id;
         }
 
@@ -116,12 +115,12 @@ class Connexion
 ----------------***************************---------------*/
 
 
-    public function getAllArticle(int $id)
+    public function getAllArticle($id)
     {
-        $stmt = $this->connexion->prepare("SELECT * FROM article
-            INNER JOIN chien
-            ON article.id_chien = chien.id
-            WHERE chien.id = :id");
+        $stmt = $this->connexion->prepare("SELECT * FROM Article
+            INNER JOIN Chien
+            ON Article.id_chien = Chien.id
+            WHERE Chien.id = :id");
         $stmt->execute(array('id' => $id));
         $article = $stmt->fetchAll(PDO::FETCH_CLASS, 'Article');
         return $article;
@@ -129,23 +128,25 @@ class Connexion
 
     public function getArticleById(int $id)
     {
-        $stmt = $this->connexion->prepare("SELECT * FROM article WHERE article.id = :id");
+        $stmt = $this->connexion->prepare("SELECT * FROM Article WHERE Article.id = :id");
         $stmt->execute(array('id' => $id));
         $article = $stmt->fetchObject('Article');
         return $article;
     }
 
-    public function setArticle ($photo, $texte, $datePublication){
-        // on prépare notre requête 
+    public function insertArticle ($photo, $texte, $datePublication, $id_chien){
         $stmt = $this->connexion->prepare(
-            "INSERT INTO article (photo, texte, datePublication) 
-            value (:photo, :texte, :datePublication)"
+            "INSERT INTO Article (photo, texte, datePublication, id_chien) 
+            value (:photo, :texte, :datePublication, :id_chien)"
         );
-        // on exécute la requête 
         $stmt = $this->connexion->prepare(array (
             'photo' => $photo,
             'texte' => $texte,
-            'datePublication' => $datePublication));
+            'datePublication' => $datePublication,
+            'id_chien' => $id_chien));
+        $id = $this->connexion->lastInsertId();
+        header("Location: article.php?id=$id");
+        return $id;
     }
 
 /* ---------*******************************------------
@@ -154,12 +155,12 @@ class Connexion
 
     public function getArticleCommentaires(int $id)
     {
-        $stmt = $this->connexion->prepare("SELECT *  FROM commentaires
-            INNER JOIN utilisateur
-            ON commentaires.user_id = utilisateur.id
-            INNER JOIN article
-            ON commentaires.id_Article = article.id
-            WHERE article.id = :id");
+        $stmt = $this->connexion->prepare("SELECT *  FROM Commentaires
+            INNER JOIN Utilisateur
+            ON Commentaires.user_id = Utilisateur.id
+            INNER JOIN Article
+            ON Commentaires.id_Article = Article.id
+            WHERE Article.id = :id");
         $stmt->execute(array('id' => $id));
         $resultat = $stmt->fetchAll(PDO::FETCH_CLASS, 'Commentaire');
         return $resultat;
@@ -168,7 +169,7 @@ class Connexion
     public function setCommentaire ($TexteDuCommentaire, $dateCommentaire, $user_id, $id_article){
         // on prépare notre requête 
         $stmt = $this->connexion->prepare(
-            "INSERT INTO commentaires (TexteDuCommentaire, dateCommentaire, user_id, id_article) 
+            "INSERT INTO Commentaires (TexteDuCommentaire, dateCommentaire, user_id, id_article) 
             value (:TexteDuCommentaire, :dateCommentaire, :user_id, :id_article)");
         // on exécute la requête 
         $stmt = $this->connexion->prepare(array (
