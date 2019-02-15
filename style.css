@@ -1,10 +1,9 @@
 body, html {
-background: black;
 font-family: sans-serif;
-color: black;
 margin:0px;
 padding: 0px;
 height: 100vh;
+color: white;
 
 }
 
@@ -19,11 +18,17 @@ height: 100vh;
     background-repeat: no-repeat;
 }
 
-/* --Home content--*/
+h5 {
+    color:white;
+    text-align: center;
+}
+
 h1{
     font-weight: bold;
-    color: #000;
+    color: white;
 }
+
+/* --Home content--*/
 
 .navbar-home{
 background: rgba(0, 0, 0, 0.2) !important;
@@ -74,18 +79,7 @@ background: rgba(0, 0, 0, 0.2) !important;
 .cover .btn.btn-primary, .btn-primary-profil {
     background: #28CC9E;
     border-color: #28CC9E;
-     color: #fff; 
-}
-
-/*bouton ajouter un article*/
-.addArticle{
-    margin: 20px;
-}
-
-.preview-article{
-    border: 1px white;
-    background-color:black;
-    color: white;
+    color: #fff; 
 }
 
 .body-change {
@@ -110,10 +104,7 @@ background: rgba(0, 0, 0, 0.2) !important;
     
     }
 
-    #cancel{
-        margin:20px;
-    }
-                     
+
 /* Gallery */
     
 .square {
@@ -146,6 +137,16 @@ background: rgba(0, 0, 0, 0.2) !important;
         justify-content: center;
       }
 
+.overlay {
+    display:block;
+    position:absolute;
+    right:0;
+    background:#000;
+    background:rgba(0, 0, 0, 0.6);
+    color:#FFF;
+    padding:10px 5px;
+}
+
 /* profil user */
 
 .profil-user{
@@ -166,11 +167,49 @@ ul, li{
     }
 }
 
-/* footer */
-.bottom-box {
-    background: #000;
-    color: #fff;
-    font-size: 14px;
+.login-form {
+    background: rgba(14, 14, 14, 0.54);
+    border: 1px solid #fff;
 }
 
+.signup-form {
+    background: rgba(14, 14, 14, 0.54);
+    border: 1px solid #fff;
+}
 
+.add-dog {
+    background: rgba(14, 14, 14, 0.54);
+    border: 1px solid #fff;
+}
+
+.add-article {
+    background: rgba(14, 14, 14, 0.54);
+    border: 1px solid #fff;
+}
+
+/* profil chien */
+
+.img-fluid {
+    background: rgba(14, 14, 14, 0.54);
+    border: 1px solid #fff;
+}
+
+#newArticle {
+    background: rgba(14, 14, 14, 0.54);
+    border: 1px solid #fff;
+}
+
+.list-group {
+    background: rgba(14, 14, 14, 0.54);
+    border: 1px solid #fff;
+}
+
+.addArticle{
+    margin: 20px;
+}
+
+.preview-article{
+    border: 2px white;
+    background: rgba(14, 14, 14, 0.54);
+    color: white;
+}

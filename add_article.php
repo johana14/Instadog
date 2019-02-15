@@ -1,6 +1,11 @@
 <?php
 require_once('connexion.php');
 $appliBD = new Connexion();
+/* session_start();
+	if(!isset($_SESSION['user']))
+	{
+		header("location: accueil.php");
+	} */
 
 if($_POST){
   /*
@@ -22,22 +27,23 @@ if($_POST){
     * ===================================
     * processing the image posted values.
     * ===================================
-    */
+    
     $suffixe = date("YmdHis");
     $uploadedFileName = $_FILES["articlephoto"]["name"];
     $uploadedFile = new SplFileInfo($uploadedFileName);
     $fileExtension = $uploadedFile->getExtension();
     $destinationFolder = $_SERVER['DOCUMENT_ROOT']."/projets/Instadog/";
     $destinationName = "images/img-".$suffixe.".".$fileExtension;
-    $imageMoved = move_uploaded_file($_FILES["articlephoto"]["tmp_name"], $destinationFolder.$destinationName);
+    $imageMoved = move_uploaded_file($_FILES["articlephoto"]["tmp_name"], $destinationFolder.$destinationName);*/
 
       /*
       * =====================
       * Add Dog to database.
       * =====================
       */
-        $appliBD->insertArticle($destinationName, $texte, $datePublication, $id_chien);
-    }
+        $appliBD->insertArticle($photo, $texte, $dateDePublication, $id_chien);
+        
+  }      
 }
 ?>
 <!DOCTYPE html>
@@ -73,7 +79,7 @@ if($_POST){
             <a class="nav-link" href="gallery.php">Search</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Logout</a>
+            <a class="nav-link" href="logout.php">Logout</a>
           </li>
         </ul>
       </div>
@@ -82,11 +88,11 @@ if($_POST){
   <!-- Page Content -->
   <div class="container-fluid cover-container text-center d-flex">
       <div class="row col-12 align-items-center justify-content-center flex-fill mx-auto">
-        <form class="" method="POST" enctype="multipart/form-data">
+        <form class="add-article" method="POST" enctype="multipart/form-data">
             <h1 class="text-center">Create Post</h1>
           <div class="form-group">
             <label for="description">Description</label>
-            <textarea rows="12" class="form-control" name="description"></textarea>
+            <textarea rows="12" class="form-control" name="description" require></textarea>
           </div>
           <div class="form-group text-white">
             <p><span class="require">*</span> - required fields</p>
@@ -102,14 +108,6 @@ if($_POST){
         </form>
       </div>
   </div>
-  <footer class="p-5">
-    <div class="container">
-      <div class="row align-items-center text-center">
-        <div class="col-sm-12 cold-md-12 col-lg-12">
-          <p><small>&copy; Bootstrap 2019. All Rights Reserved. <br> Made with <i class="fas fa-search"></i> by <a href="https://realise.com/">Realise</a></p>
-        </div>
-      </div>
-    </footer>
 </body>
 </html>
 <!-- Bootstrap core JavaScript -->

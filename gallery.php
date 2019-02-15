@@ -59,10 +59,6 @@ $chiens = $appliBD->getAllChien();
             <ul class="dropdown-menu" role="menu">
               <li><a href="#contains">Contains</a></li>
               <li><a href="#its_equal">It's equal</a></li>
-              <li><a href="#greather_than">Greather than ></a></li>
-              <li><a href="#less_than">Less than</a></li>
-              <li class="divider"></li>
-              <li><a href="#all">Anything</a></li>
             </ul>
           </div>
           <input type="text" class="form-control" name="x" placeholder="Search term...">
@@ -78,20 +74,12 @@ $chiens = $appliBD->getAllChien();
       <div class="square col-lg-3 col-sm-12 col-md-3 mx auto">
         <div class="content">
           <img class=" content img-fluid" src="'.$chien->getPhoto().'">
+          <p class="overlay">'.$chien->getsurNom().'</p>
         </div>
       </div>
       ';}?>
     </div>
-  </div>
-  
-    <div class="container">
-      <div class="row align-items-center text-center">
-        <div class="col-sm-12 cold-md-12 col-lg-12">
-          <p><small>&copy; Bootstrap 2019. All Rights Reserved. <br> Made with <i class="fas fa-search"></i> by <a href="https://realise.com/">Realise</a></small></p>
-        </div>
-      </div>
-    </div>
-  
+  </div> 
 </body>
 
 </html>

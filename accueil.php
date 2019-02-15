@@ -47,9 +47,6 @@
              </p>
           </div>
       </div>
-    <footer class="p-5">
-        <p><small>&copy; Bootstrap 2019. All Rights Reserved. <br> Made with <i class="fas fa-search"></i> by <a href="https://realise.com/">Realise</a></small></p>
-      </footer>
     </div>
   
 </body>

@@ -44,22 +44,13 @@ if ($_POST) {
                      * Add user to database.
                      * =====================
                      */
-                    $dateDerniereConnexion = null; // GETDATE();
-                    $appliBD->insertUser($_POST['username'], $passwordHash, $dateDerniereConnexion);
+                    /*$dateDerniereConnexion = null; // GETDATE();*/
+                    $appliBD->insertUser($_POST['username'], $passwordHash);
 
-                    session_start();
-
-                    echo 'Bienvenue à la page numéro 1';
-
-                    $_SESSION['username'] = 'username';
-                    $_SESSION['password']   = 'password';
-                    $_SESSION['id']     = 'id';
-
-                    // Fonctionne si le cookie a été accepté
-                    echo '<br /><a href="page2.php">page 2</a>';
-
-                    // Ou bien, en indiquant explicitement l'identfiant de session
-                    echo '<br /><a href="page2.php?' . SID . '">page 2</a>';
+                    session_start ();
+                    $_SESSION['username'] = $userid;
+                    $_SESSION['password'] = $hashpassword;
+                    header("Location: profil_utilisateur.php?id=$id");
 
 
                 } else {
@@ -80,16 +71,16 @@ if ($_POST) {
      */
     if (isset($_POST['signin'])) {
 
-    $username = ($_POST['loginUser']);
+    $user = ($_POST['loginUser']);
     $userpassword = ($_POST['loginPassword']);
-
+    
         /*
          * ============================
          * Get user info from database.
          * ============================
          */
-        $username = $appliBD->getUserinfo($username);
-
+        $username = $appliBD->getUserinfo($user);
+        $userid = $username->getId();
         /*
          * ==========================
          * If user exist in database.
@@ -98,8 +89,7 @@ if ($_POST) {
 
         if ($username) {
             $hashpassword = $username->getMotDePasse();
-            $userid = $username->getId();
-
+            
             /*
              * ==========================
              * Verify password for users.
@@ -112,10 +102,14 @@ if ($_POST) {
                 * Redirect user to Gallery.
                 * =========================
                 */
-                header("Location: gallery.php");
+                
+                session_start ();
+                $_SESSION['user'] = $userid;
+		        $_SESSION['password'] = $hashpassword;
+                header('Location: profil_utilisateur.php?'.$userid.'');   
 
             } else {
-                echo "L’username et/ou le mot de passe ne correspondent pas aux données enregistrées. Veuillez vérifier vos données et réessayer.";
+                echo "Le mot de passe ne correspond pas aux données enregistrées. Veuillez vérifier vos données et réessayer.";
             }
 
         } else {

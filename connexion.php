@@ -34,8 +34,9 @@ class Connexion
         return $this->connexion->lastInsertId();
     }
 
-/* -------------***************************---------------
-----------------******FONCTIONS USER*******---------------
+
+/* -------------***************************----------------
+----------------******FONCTIONS USER*******----------------
 ----------------***************************---------------*/
     public function getUserChien($id)
     {
@@ -51,21 +52,20 @@ class Connexion
             "SELECT * FROM Utilisateur WHERE username = :username");
         $stmt->execute(array('username' => $username));   
         $userProfile = $stmt->fetchObject("Utilisateur");
+        $id = $this->connexion->lastInsertId();
         return $userProfile;
     }
 
-    public function insertUser($username, $password, $dateDernierConnexion)
+    public function insertUser($username, $password, $dateDerniereConnexion)
     {
         $stmt = $this->connexion->prepare(
-            "INSERT INTO Utilisateur (username, password, dateDernierConnexion)
-            VALUES (:username, :password, :dateDernierConnexion)");
+            "INSERT INTO Utilisateur (username, password, dateDerniereConnexion)
+            VALUES (:username, :password, :dateDerniereConnexion)");
         $stmt->execute(array(
             'username' => $username,
             'password' => $password,
-            'dateDernierConnexion' => $dateDernierConnexion));
+            'dateDerniereConnexion' => $dateDerniereConnexion));
             $id = $this->connexion->lastInsertId();
-            header("Location: profil_utilisateur.php?id=$id");
-
     }
 
 /* -------------***************************----------------
@@ -74,9 +74,9 @@ class Connexion
 
     public function getAllChien()
     {
-        $stmt = $this->connexion->prepare("SELECT *  FROM Chien
+        $stmt = $this->connexion->prepare("SELECT * FROM Chien
             INNER JOIN Utilisateur
-            ON chien.user_id = utilisateur.id");
+            ON Chien.user_id = Utilisateur.id");
         $stmt->execute();
         $chien = $stmt->fetchAll(PDO::FETCH_CLASS, 'Chien');
         return $chien;
@@ -126,7 +126,7 @@ class Connexion
         return $article;
     }
 
-    public function getArticleById(int $id)
+    public function getArticleById($id)
     {
         $stmt = $this->connexion->prepare("SELECT * FROM Article WHERE Article.id = :id");
         $stmt->execute(array('id' => $id));
@@ -134,15 +134,15 @@ class Connexion
         return $article;
     }
 
-    public function insertArticle ($photo, $texte, $datePublication, $id_chien){
+    public function insertArticle ($photo, $texte, $dateDePublication, $id_chien){
         $stmt = $this->connexion->prepare(
-            "INSERT INTO Article (photo, texte, datePublication, id_chien) 
-            value (:photo, :texte, :datePublication, :id_chien)"
+            "INSERT INTO Article (photo, texte, dateDePublication, id_chien) 
+            value (:photo, :texte, :dateDePublication, :id_chien)"
         );
         $stmt = $this->connexion->prepare(array (
             'photo' => $photo,
             'texte' => $texte,
-            'datePublication' => $datePublication,
+            'dateDePublication' => $dateDePublication,
             'id_chien' => $id_chien));
         $id = $this->connexion->lastInsertId();
         header("Location: article.php?id=$id");

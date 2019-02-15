@@ -2,6 +2,13 @@
 require_once ('connexion.php');
 $appliBD = new Connexion();
 $user = $appliBD->getUserChien(($_GET["id"]));
+session_start();
+	if(!isset($_SESSION['user']))
+	{
+		header("location: accueil.php");
+	}
+?>
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,11 +35,11 @@ $user = $appliBD->getUserChien(($_GET["id"]));
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="accueil.html">Home <span class="sr-only">(current)</span>
+                        <a class="nav-link" href="accueil.php">Home <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="gallery.html">Search</a>
+                        <a class="nav-link" href="gallery.php">Search</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php">Logout</a>
@@ -64,8 +71,8 @@ $user = $appliBD->getUserChien(($_GET["id"]));
                         </div>
                         <div class="form-group">
                             <label class="form-label form-control-label"></label>
-                            <input type="reset" class="btn btn-secondary-profil" value="Cancel">
-                            <input type="button" class="btn btn-primary-profil" value="Save Changes">
+                            <input type="reset" class="btn btn-primary-profil" value="Cancel">
+                            <input type="button" class="btn btn-success-profil" value="Save Changes">
                         </div>
                     </form>
                 </div>
@@ -78,19 +85,7 @@ $user = $appliBD->getUserChien(($_GET["id"]));
                 </div>
             </div>
         </div>  
-    </div>
-        <div class="container">
-            <div class="row  align-items-center text-center">
-                <div class="col-sm-12 cold-md-12 col-lg-12">
-                <p><small>&copy; Bootstrap 2019. All Rights Reserved. <br> Made with <i class="fas fa-search"></i> by <a href="https://realise.com/">Realise</a></small></p>
-                </div>
-            </div>
-        </div>
-   
-
-    
-
-    
+    </div>  
 </body>
 
 </html>

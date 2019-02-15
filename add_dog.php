@@ -1,6 +1,11 @@
 <?php
 require_once('connexion.php');
 $appliBD = new Connexion();
+/* session_start();
+if(!isset($_SESSION['user']))
+{
+        header("location: accueil.php");
+} */
 
 if($_POST){
   /*
@@ -85,7 +90,7 @@ if($_POST){
             <a class="nav-link" href="gallery.php">Search</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.php">login</a>
+            <a class="nav-link" href="logout.php">logout</a>
           </li>
         </ul>
       </div>
@@ -94,7 +99,7 @@ if($_POST){
   <!-- Page Content -->
   <div class="container-fluid cover-container text-center d-flex flex-column">
       <div class="row bg align-items-center justify-content-center flex-fill">
-      <form class="mx-auto" method="POST" enctype="multipart/form-data">
+      <form class="add-dog mx-auto" method="POST" enctype="multipart/form-data">
           <h1>Add Dog</h1>
         <div class="form-group col-12">
           <label>Add Dog</label>
@@ -134,9 +139,6 @@ if($_POST){
       </form>
     </div>
   </div>
-  <footer class="p-5">
-    <p><small>&copy; Bootstrap 2019. All Rights Reserved. <br> Made with <i class="fas fa-search"></i> by <a href="https://realise.com/">Realise</a></small></p>
-  </footer>
 </body>
 
 </html>

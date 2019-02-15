@@ -28,14 +28,14 @@ $appliBD = new Connexion();
       <div class="collapse navbar-collapse " id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="accueil.html">Home <span class="sr-only">(current)</span>
+            <a class="nav-link" href="accueil.php">Home <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="gallery.html">Search</a>
+            <a class="nav-link" href="gallery.php">Search</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.html">Login</a>
+            <a class="nav-link" href="login.php">Login</a>
           </li>
         </ul>
       </div>
@@ -44,11 +44,11 @@ $appliBD = new Connexion();
   <!-- Page Content -->
   <div class="container-fluid cover-container text-center d-flex flex-column">
       <div class="row bg align-items-center justify-content-center flex-fill">
-      <form class="mx-auto" action="validation_user.php" method="POST">
+      <form class="signup-form mx-auto" action="validation_user.php" method="POST">
         <h1>SIGNUP</h1>
         <div class="form-group col-12">
-          <label class="inputuserName">userName</label>
-          <input type="text" class="form-control" name="username" id="inputUser" placeholder="userName">
+          <label class="inputuserName">Username</label>
+          <input type="text" class="form-control" name="username" id="inputUser" placeholder="Username">
         </div>
         <div class="form-group col-12">
           <label class="inputPassword">Password</label>
@@ -58,23 +58,13 @@ $appliBD = new Connexion();
           <label class="inputPassword">Confirm Password</label>
           <input type="password" class="form-control" name="password-verify" id="inputPassword" placeholder="Password">
         </div>
-        <div class="col-lg-12 text-center mt-4">
-          <button type="reset" class="btn btn-secondary"><a href="accueil.php">Cancel</button></a>
-          <button type="submit" class="btn btn-primary" name="register">Register</button>
+        <div class="col-lg-12 text-center mt-4 mb-2">
+          <button type="reset" class="btn btn-primary btn-cancel"><a href="accueil.php">Cancel</button></a>
+          <button type="submit" class="btn btn-success" name="register">Register</button>
         </div>
       </form>
     </div>
-    </div>
-    <footer class="p-5">
-      <div class="container">
-        <div class="row align-items-center text-center">
-          <div class="col-sm-12 cold-md-12 col-lg-12">
-            <p><small>&copy; Bootstrap 2019. All Rights Reserved. <br> Made with <i class="fas fa-search"></i> by <a href="https://realise.com/">Realise</a></small></p>
-          </div>
-        </div>
-      </div>     
-    </footer>
-    
+    </div>  
 </body>
 
 </html>

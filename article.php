@@ -3,6 +3,11 @@ require_once ('connexion.php');
 $appliBD = new Connexion();
 $articles = $appliBD->getAllArticle(($_GET["id"]));
 $commentaires = $appliBD->getArticleCommentaires(($_GET["id"]));
+session_start();
+	if(!isset($_SESSION['user']))
+	{
+		header("location: accueil.php");
+	}
 ?>
 <!DOCTYPE html>
 <html>

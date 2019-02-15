@@ -1,8 +1,6 @@
 <?php
 require_once('connexion.php');
 $appliBD = new Connexion();
-// On démarre la session
-session_start ();
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,11 +29,11 @@ session_start ();
       <div class="collapse navbar-collapse " id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="accueil.html">Home <span class="sr-only">(current)</span>
+            <a class="nav-link" href="accueil.php">Home <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="gallery.html">Search</a>
+            <a class="nav-link" href="gallery.php">Search</a>
           </li>
           <li class="nav-item">
           </li>
@@ -46,11 +44,11 @@ session_start ();
   <!-- Page Content -->
   <div class="container-fluid cover-container text-center d-flex flex-column">
     <div class="row align-items-center justify-content-center flex-fill">
-      <form class="mx-auto" method="POST" action="validation_user.php">
+      <form class="login-form mx-auto" method="POST" action="validation_user.php">
         <h1>LOGIN</h1>
         <div class="form-group col-12">
-          <label for="inputuserName">userName</label>
-          <input type="text" class="form-control"  id="inputUser" name="loginUser" placeholder="userName">
+          <label for="inputuserName">Username</label>
+          <input type="text" class="form-control"  id="inputUser" name="loginUser" placeholder="Username">
         </div>
         <div class="form-group col-12">
           <label for="inputPassword">Password</label>
@@ -59,20 +57,11 @@ session_start ();
         <div class="checkbox col-12">
           <label><input type="checkbox"> Remember me</label>
         </div>
-        <div class="col-lg-12 text-center mt-4">
-          <button type="submit" class="btn btn-primary" name="signin">login</button>
+        <div class="col-lg-12 text-center mt-4 mb-2">
+          <button type="submit" class="btn btn-success" name="signin">login</button>
         </div>
       </form>
     </div>
-    <footer class="p-5">
-        <div class="container">
-          <div class="row align-items-center text-center">
-            <div class="col-sm-12 cold-md-12 col-lg-12">
-              <p><small>&copy; Bootstrap 2019. All Rights Reserved. <br> Made with <i class="fas fa-search"></i> by <a href="https://realise.com/">Realise</a></small></p>
-            </div>
-          </div>
-        </div>
-      </footer>
   </div>
   
 </body>
